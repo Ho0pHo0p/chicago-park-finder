@@ -79,11 +79,35 @@ h1, h2, h3, h4 {
   color: var(--main-text-color);
 }
 
+h1 {
+
+  font-size: 22px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 24px;
+  padding: 8px 0px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
 a {
   font: inherit;
   color: inherit;
   text-decoration: none;
+  font-weight: 500;
 }
+
+button {
+  background-color: var(--main-color);
+  color: var(--back-color2);
+  border-radius: 5px;
+  padding: 10px 24px;
+}
+
 
 /* HEADER STYLING */
 
@@ -101,12 +125,6 @@ header {
 
 .menu {
   background-color: azure;
-}
-
-h1 {
-
-  font-size: 22px;
-  font-weight: 400;
 }
 
 .language {
@@ -138,15 +156,6 @@ h1 {
   flex-flow: column;
   gap: 24px;
   g
-}
-
-section h2 {
-  font-size: 24px;
-  padding: 8px 0px;
-}
-
-section h3 {
-  font-size: 22px;
 }
 
 /* Section 1*/ 
@@ -187,7 +196,7 @@ input, input:focus{
 
 /* Section 2 */
 
-.features-head {
+.section-title {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -232,7 +241,83 @@ a {
 }
 
 /* Section 3 */
+.categories {
+  display: flex;
+  justify-content: space-between;
+}
 
+li {
+  text-align: center;
+  font-size: 14px;
+}
 
+li img {
+  grid-row: 1;
+  width: 65px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px rgba(113, 121, 113, .3);
+
+  margin: 8px 0px;
+}
+
+/* Section 4 */
+
+.card-container {
+  margin-right: -16px;
+
+  width: auto;
+  height: 220px;
+ 
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-flow: column wrap;
+  overflow-x: scroll;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+
+}
+
+.card-container::-webkit-scrollbar{
+  display: none;
+}
+
+.card {
+  width: 180px;
+  height: 197px;
+  border: 1px var(--accent-color1) solid;
+  border-radius: 8px;
+}
+
+/* Section 3 */
+
+.feedback p {
+  line-height: 24px;
+  font-size: 17px;
+  max-width: 310px;
+
+  margin-top: 5px;
+}
+
+.feedback-form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 16px;
+}
 
 /* FOOTER */
+
+footer {
+  background-color: var(--back-color3);
+  height: 340px;
+  padding: 32px;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  color: var(--main-text-color);
+
+}
+
