@@ -314,10 +314,24 @@ footer {
   padding: 32px;
 
   display: flex;
-  flex-flow: column;
   justify-content: space-between;
+  flex-flow: column;
 
+  line-height: 28px;
+  font-size: 17px;
+  font-weight: 200;
   color: var(--main-text-color);
-
 }
 
+.footer-container {
+  display: flex;
+  flex-flow: column;
+}
+
+footer a {
+  color: var(--p-font);
+  text-decoration: underline;
+}
+.fa-brands {
+  font-size: 32px;
+}
