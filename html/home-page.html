@@ -12,19 +12,68 @@
 <body>
 
   <header>
-    <nav class="menu"><i class="fa-solid fa-bars"></i></nav>
-    <h1>Chicago Park District</h1>
-    <a href="#" class="language">EN<i class="fa-solid fa-chevron-down"></i></a>
+    <div class="header">
+      <nav class="mobile-menu hidden">
+        <i class="fa-solid fa-bars"></i>
+      </nav>
+      <img class="emblem hidden">
+      <h1>Chicago Park District</h1>
+      <a href="#" class="language ">EN<i class="fa-solid fa-chevron-down"></i></a>
+    
+
+      <ul class="site-links">
+        <li><a href="#">Accessiblity</a></li>
+        <i class="fa-solid fa-circle"></i>
+        <li><a href="#">Jobs</a></li>
+        <i class="fa-solid fa-circle"></i>
+        <li><a href="#">COVID-19</a></li>
+        <i class="fa-solid fa-circle"></i>
+        <li><a href="#">Contact Us</a></li>
+        <i class="fa-solid fa-circle"></i>
+        <li><a href="#">Shop</a></li>
+      </ul>
+
+      <ul class="page-links">
+        <li><a href="#">Parks & Facilities</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Permits & Rentals</a></li>
+        <li><a href="#">Get Involved</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+
+    </div>
   </header>
 
   <div class="main-section">
-    <section>
+    <section class="section1">
       <h2>Find a Chicago Park</h2>
       <form>
         <div class="search-bar-container">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input class="search-bar" type="search-bar-container" placeholder="Search Zip Code, Activity, Park">
+          <input class="search-bar" type="search" placeholder="Search Zip Code, Activity, Park">
           <i class="fa-solid fa-filter"></i>
+        </div>
+        <div class="search-menu hidden">
+          <div class="search search-zip">
+            <h4>Zip Code</h4>
+            <ul>
+              <li>603606</li>
+              <li>630000</li>
+            </ul>
+          </div>
+          <div class="search search-park">
+          <h4>Parks</h4>
+            <ul>
+              <li>63rd Street Beach</li>
+            </ul>
+          </div>
+          <div class="search search-address">
+          <h4>Address</h4>
+          <ul>
+            <li>6300 N Lakeshore Drive</li>
+          </ul>
+          </div>
         </div>
 
       </form>
@@ -47,22 +96,24 @@
         <h3>Top Categories</h3>
         <a href="#">See All</a>
       </div>
-      <ul class="categories">
-        <li>
-          <img src="/images/icon.png">
+      <div class="categories">
+        <div>
+          <img class="cat-icon"src="/images/icon.png">
           <p>Park</p>
-        </li>
-        <li>
-          <img src="/images/icon.png">
+        </div>
+        <div>
+          <img class="cat-icon"src="/images/icon.png">
           <p>Playground</p>
-        </li>
-        <li><img src="/images/icon.png">
-        <p>Beach</p>
-        </li>
-        <li><img src="/images/icon.png">
+        </div>
+        <div>
+          <img class="cat-icon"src="/images/icon.png">
+          <p>Beach</p>
+        </div>
+        <div>
+          <img class="cat-icon" src="/images/icon.png">
           <p>Trail</p>
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
     <section>
       <div class="section-title">
@@ -76,10 +127,12 @@
         </div>
         <div class="card">
         </div>
+        <div class="card">
+        </div>
       </div>
     </section>
     <section class="feedback-form feedback">
-      <div>
+      <div class="feeback-info">
       <h3>Submit Park Feedback</h3>
       <p>The Chicago Park District is committed to making its facilities accessible to and enjoyable by all. Tell us about your experience using the Park Feedback form</p>
       </div>
