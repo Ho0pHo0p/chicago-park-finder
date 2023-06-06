@@ -16,63 +16,33 @@
       <nav class="mobile-menu mobile hidden">
         <i class="fa-solid fa-bars"></i>
       </nav>
-      <i class="fa-solid fa-tree emblem"></i>
+      <i class="fa-solid fa-tree emblem" id="tree-emblem"></i>
       <h1>Chicago Park District</h1>
       <a href="#" class="language ">EN<i class="fa-solid fa-chevron-down"></i></a>
-    
-
-      <ul class="site-links">
-        <li><a href="#">Accessiblity</a></li>
-        <i class="fa-solid fa-circle"></i>
-        <li><a href="#">Jobs</a></li>
-        <i class="fa-solid fa-circle"></i>
-        <li><a href="#">COVID-19</a></li>
-        <i class="fa-solid fa-circle"></i>
-        <li><a href="#">Contact Us</a></li>
-        <i class="fa-solid fa-circle"></i>
-        <li><a href="#">Shop</a></li>
-      </ul>
-
-      <ul class="page-links">
-        <li><a href="#">Parks & Facilities</a></li>
-        <li><a href="#">Programs</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">Permits & Rentals</a></li>
-        <li><a href="#">Get Involved</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-
     </div>
   </header>
 
   <div class="main-section">
     <section class="section1">
-      <h2>Find a Chicago Park</h2>
+      <h2>Find a National Park</h2>
       <form>
         <div class="search-bar-container">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input class="search-bar" type="search" placeholder="Search Zip Code, Activity, Park">
+          <input class="search-bar" type="search" placeholder="Search State">
           <i class="fa-solid fa-filter"></i>
         </div>
         <div class="search-menu hidden">
           <div class="search search-zip">
-            <h4>Zip Code</h4>
+            <h4>State</h4>
             <ul>
-              <li>603606</li>
-              <li>630000</li>
+              <li>NJ</li>
             </ul>
           </div>
           <div class="search search-park">
           <h4>Parks</h4>
             <ul>
-              <li>63rd Street Beach</li>
+              <li>Yellowstone</li>
             </ul>
-          </div>
-          <div class="search search-address">
-          <h4>Address</h4>
-          <ul>
-            <li>6300 N Lakeshore Drive</li>
-          </ul>
           </div>
         </div>
 
@@ -81,44 +51,20 @@
     <section class="features section2">
       <div class="section-title">
       <h3>Features & Activities</h3>
-      <a href="#">See All</a>
+      <a href="#" class="features-expand">See All</a>
       </div>
-      <ul>
-        <li class="features-item1 access-feature">mobility device rental</li>
-        <li class="features-item2 rec-feature ">hiking</li>
-        <li class="features-item3 rec-feature ">volleyball</li>
-        <li class="features-item4 gen-feature">parking</li>
-        <li class="features-item5 gen-feature">restrooms</li>
+      <ul class="features-list">
+        <li class="features-item access-feature">mobility device rental</li>
+        <li class="features-item act-feature ">hiking</li>
+        <li class="features-item act-feature ">volleyball</li>
+        <li class="features-item gen-feature">parking</li>
+        <li class="features-item gen-feature">restrooms</li>
       </ul>
-    </section>
-    <section class="section3">
-      <div class="section-title">
-        <h3>Top Categories</h3>
-        <a href="#">See All</a>
-      </div>
-      <div class="categories">
-        <div>
-          <img class="cat-icon"src="/images/icon.png">
-          <p>Park</p>
-        </div>
-        <div>
-          <img class="cat-icon"src="/images/icon.png">
-          <p>Playground</p>
-        </div>
-        <div>
-          <img class="cat-icon"src="/images/icon.png">
-          <p>Beach</p>
-        </div>
-        <div>
-          <img class="cat-icon" src="/images/icon.png">
-          <p>Trail</p>
-        </div>
-      </div>
     </section>
     <section class="section4">
       <div class="section-title">
-        <h3>Chicago Parks Near You</h3>
-        <a href="#">See All</a>
+        <h3>National Parks Near You</h3>
+        <a href="#" class="parks-expand">See All</a>
       </div>
       <div class="card-container">
         <div class="card">
@@ -147,7 +93,7 @@
 
   <footer>
 
-    <i class="fa-solid fa-tree emblem-footer"></i>
+    <i class="fa-solid fa-tree emblem-footer" id="footer-emblem"></i>
 
     <div class="footer-container contact">
     <h3>Contact Us</h3>
@@ -158,8 +104,6 @@
     <div class="footer-container site-areas">
       <h3>Site Areas</h3>
         <a href="#" >Park Accessility</a>
-        <a href="#">Permits & Rentals</a>
-        <a href="#">Events and Programs</a>
       </div>
 
     <div class="footer-container location hidden">
@@ -177,7 +121,8 @@
 
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="https://kit.fontawesome.com/4c73b9f07c.js" crossorigin="anonymous"></script>
-  <script src="/js/home-page.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
