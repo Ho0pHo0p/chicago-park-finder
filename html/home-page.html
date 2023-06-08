@@ -25,15 +25,14 @@
   <div class="main-section">
     <section class="section1">
       <h2>Find a National Park</h2>
-      <form>
+      <form autocomplete="off">
         <div class="search-bar-container">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input class="search-bar" type="text" placeholder="Search State">
+          <input id="search-bar" type="search" placeholder="Search State">
           <i class="fa-solid fa-filter"></i>
         </div>
-        <div class="search-menu">
-          <div class="search search-zip">
-            <h4>State</h4>
+        <div class="search-menu hidden">
+          <div class="search search-state">
             <ul id="state-list">
             </ul>
           </div>
