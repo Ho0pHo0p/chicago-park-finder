@@ -180,6 +180,7 @@ input, input:focus{
   border: none;
   background-color: transparent;
   width: 100%;
+  padding-top: 7px;
 
   font-family: var(--p-font);
   font-size: 17px;
@@ -189,15 +190,16 @@ input, input:focus{
 
 .search-menu {
   position: absolute;
-  top: 175px;
+  top: 180px;
   width: 75vw;
   padding: 16px;
+  padding-top: 0px;
 
 
   background-color: var(--back-color2);
 
   box-shadow: 1px 6px 6px rgba(113, 121, 113, .2);
-  border-radius: 0px 4px 0px px;
+  border-radius: 0px 0px 8px 8px;
 
   display: flex;
   flex-flow: column;
@@ -235,11 +237,13 @@ input, input:focus{
 .fa-magnifying-glass {
   color: rgba(113, 121, 113, 1);
   font-size: 1rem;
+  padding-top: 8px;
 }
 
 .fa-filter {
   color: var(--accent-color1);
   font-size: 1rem;
+  padding-top: 8px;
 }
 
 /* Section 2 */
@@ -490,7 +494,7 @@ footer a {
   }
 
   .search-menu {
-    top: 205px;
+    top: 240px;
     width: 50vw;
   }
 
@@ -687,7 +691,7 @@ footer a {
   }
   
   .search-menu {
-      top: 330px;
+      top: 370px;
       width: 50vw;
     }
   
