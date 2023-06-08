@@ -6,6 +6,8 @@ key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2'
 const featureContainer = document.querySelector('.features-list'); 
 const featureExpand = document.querySelector('.features-expand');
 
+const stateContainer = document.querySelector('#state-list');
+
 const filterMenu = document.querySelector('.search-menu'); 
 const filterBtn = document.querySelector('.fa-filter');
 const searchBar = document.querySelector('.search-bar');
@@ -18,7 +20,66 @@ const activity = {
   name:[]
 }
 
+const stateCodes = {
+  name: [
+    'Alabama',
+    'Alaska',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'Florida',
+    'Georgia',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas',
+    'Kentucky',
+    'Louisiana',
+    'Maine',
+    'Maryland',
+    'Massachusetts',
+    'Michigan',
+    'Minnesota',
+    'Mississippi',
+    'Missouri',
+    'Montana',
+    'Nebraska',
+    'Nevada',
+    'New Hampshire',
+    'New Jersey',
+    'New Mexico',
+    'New York',
+    'North Carolina',
+    'North Dakota',
+    'Ohio',
+    'Oklahoma',
+    'Oregon',
+    'Pennsylvania',
+    'Rhode Island',
+    'South Carolina',
+    'South Dakota',
+    'Tennessee',
+    'Texas',
+    'Utah',
+    'Vermont',
+    'Virginia',
+    'Washington',
+    'West Virginia',
+    'Wisconsin',
+    'Wyoming'
+  ],
+  code: [
+    'AK','AL','AR','AZ','CA','CO','CT','DE','FL','GA','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY'
+  ]
+}
 
+// FUNCTIONS 
+stateAutoFill();
 
 //Event Listeners 
 
@@ -38,12 +99,33 @@ searchBar.addEventListener('focusout', ()=>{
 
 
 // emblem 
-for ()
-
-
 
 
 // NPS API 
+
+function stateAutoFill() {
+
+  for (let i = 0; i <= 49; i++){
+      const newState = document.createElement("li"); 
+      newState.classList.add("state");
+      newState.innerText=`${stateCodes.code[i]}`;
+      stateContainer.append(newState)
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const loadActivity = async ()=> {
 
