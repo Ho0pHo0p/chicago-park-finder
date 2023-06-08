@@ -205,22 +205,31 @@ input, input:focus{
 }
 
 .search {
+  margin-left: 20px;
+
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   gap: 8px;
+
+  max-height: 30vh;
+  overflow: scroll;
+
+
 }
 
 .search li {
   background-color: var(--back-color1);
-  width: 70vw;
+  width: 65vw;
   height: 12px;
   padding: 10px;
 
   border-radius: 4px;
   border-bottom: 1px solid rgba(113, 121, 113, .2);;
   text-align: left;
+
+  cursor: pointer;
 }
 
 .fa-magnifying-glass {
@@ -664,9 +673,6 @@ footer a {
     grid-row: 2; 
   }
 
-  .main-section {
-  }
-
   /* Section 1*/
 
   .section1 {
@@ -690,11 +696,6 @@ footer a {
       max-width: 48vw;
     }
   }
-  
-  .search-menu {
-    
-  }
-
 
   .section1 h2 {
     font-size: 45px;
@@ -767,5 +768,4 @@ footer a {
   .emblem-footer {
     font-size: 72px;
     grid-column: 2;
-
   }

@@ -75,11 +75,12 @@ const stateCodes = {
   ],
   code: [
     'AK','AL','AR','AZ','CA','CO','CT','DE','FL','GA','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY'
+  ],
+  li: [
   ]
 }
 
 // FUNCTIONS 
-stateAutoFill();
 
 //Event Listeners 
 
@@ -100,25 +101,24 @@ searchBar.addEventListener('focusout', ()=>{
 
 // emblem 
 
-
+stateAutoFill();
 // NPS API 
 
 function stateAutoFill() {
-
-  for (let i = 0; i <= 49; i++){
-      const newState = document.createElement("li"); 
-      newState.classList.add("state");
-      newState.innerText=`${stateCodes.code[i]}`;
-      stateContainer.append(newState)
+  for (state of stateCodes.name){
+    const newState = document.createElement("li"); 
+    newState.classList.add("state");
+    newState.innerText=`${state}`;
+    stateContainer.append(newState) 
   }
-
 }
 
-
-
-
-
-
+for (i=0; i<=49 ; i++ ){
+    stateCodes.li[i] = stateContainer.children[i];
+    stateCodes.li[i].addEventListener("click", (e) =>{
+      console.log(e.target.innerText)
+    })
+}
 
 
 
@@ -152,4 +152,3 @@ const loadActivity = async ()=> {
     });
 
 };
-
