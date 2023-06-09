@@ -32,6 +32,7 @@ const stateCodes = {
     "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS","MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY","NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
   ],
 }
+
 /*--- EVENT LISTENERS ----*/
 
 function searchFormFunc() {
@@ -41,34 +42,30 @@ function searchFormFunc() {
   });
   searchForm.addEventListener("submit", searchSubmit);
 
-  function searchSubmit(e) {
-    e.preventDefault();
-    let userStateChoice = searchBar.value;
-    for(let i=0; i < stateCodes.name.length; i++){
-      if (userStateChoice === stateCodes.name[i]){
-        let userStateCode =  stateCodes.code[i].toLocaleLowerCase()
-        loadParks(userStateCode);
-        userStateCode = ''; 
-      }
+}
+
+function searchSubmit(e) {
+  e.preventDefault();
+  let userStateChoice = searchBar.value;
+  for(let i=0; i < stateCodes.name.length; i++){
+    if (userStateChoice === stateCodes.name[i]){
+      let userStateCode =  stateCodes.code[i].toLocaleLowerCase()
+      loadParks(userStateCode);
+      userStateCode = ''; 
     }
   }
 }
 
-
-searchFormFunc();
-
-
-/*----- FUNCTIONS----*/
-
-// auto-complete-state
 function autoCompleteState() {
   let userInput = document.getElementById("search-bar");
   const stateContainer = document.getElementById("state-list");
+  let parkContainer = document.getElementById("park-list");
+
   userInput.addEventListener('input', autoCompleteMe);
   stateContainer.addEventListener('click', selectItem);
 
-
   function autoCompleteMe({target}){
+    parkContainer.innerHTML = ''
     let data = target.value;
     stateContainer.innerHTML = ''
     if (data.length){
@@ -91,61 +88,15 @@ function autoCompleteState() {
     stateContainer.append(newState)
   }
 
-  function selectItem({ target }) {
-    if (target.tagName === 'LI') {
-      userInput.value = target.innerText; 
+  function selectItem(e) {
+    if (e.target.tagName === 'LI') {
+      userInput.value = e.target.innerText; 
       stateContainer.innerHTML = '';
+      searchSubmit(e);
     }
   }
 }
 
-
-//auto-complete-park
-// function autoCompletePark() {
-//   let userInput = document.getElementById("search-bar");
-//   const parkContainer = document.getElementById("park-list");
-//   userInput.addEventListener('input', autoCompleteMe);
-//   parkContainer.addEventListener('click', selectItem);
-
-
-//   function autoCompleteMe({target}){
-//     let data = target.value;
-//     parkContainer.innerHTML = ''
-//     if (data.length){
-//       let autoCompleteValues = autoCompleteCheck(data); 
-//       autoCompleteValues.forEach(value => {addItem(value); });
-//     }
-//   }
-  
-//   function autoCompleteCheck(inputValue){
-//     let parkNames = parks.name; 
-//     let park = [...parkNames]
-//     return park.filter (
-//       value => value.toLowerCase().includes(inputValue.toLowerCase())
-//     );
-//   }
-
-//   function addItem(value){
-//     let newPark = document.createElement('li');
-//     newPark.innerText = `${value}`
-//     parkContainer.append(newPark)
-//   }
-
-//   function selectItem({ target }) {
-//     if (target.tagName === 'LI') {
-//       userInput.value = target.innerText; 
-//       parkContainer.innerHTML = ''
-//     }
-//   }
-// }
-
-//Features
-featureExpand.addEventListener('click', (e)=>{
-  loadActivity();
-})
-
-
-// NPS API
 async function loadActivity() {
 
   const activityApi = `https://developer.nps.gov/api/v1/activities?&api_key=${key}`;
@@ -174,6 +125,8 @@ async function loadActivity() {
 
 async function loadParks(userStateCode) {
   const parksApi = `https://developer.nps.gov/api/v1/parks?stateCode=${userStateCode}&api_key=${key}`;
+  const parkContainer = document.getElementById("park-list");
+  const stateContainer = document.getElementById("state-list");
 
   axios.get(parksApi)
     .then((res)=> {
@@ -185,8 +138,15 @@ async function loadParks(userStateCode) {
         parks.description[i] = res.data.data[i].description;
         parks.images[i] = res.data.data[i].images
       }
-    })
+         
+      parkContainer.innerHTML= ''
 
+      for (let i=0; i < parks.name.length; i++) {
+        let stateParkItem = document.createElement('li');
+        stateParkItem.innerText = `${parks.name[i]}`
+        parkContainer.append(stateParkItem);
+      }
+    })
     .catch((e) => {
       console.log("error", e);
     });
@@ -195,6 +155,9 @@ async function loadParks(userStateCode) {
 
 
 /*---RUN FUNCTIONS---*/
-
+featureExpand.addEventListener('click', (e)=>{
+  loadActivity();
+})
+searchFormFunc();
 autoCompleteState();
-// autoCompletePark();
+
