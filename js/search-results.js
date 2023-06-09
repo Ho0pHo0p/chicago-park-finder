@@ -38,6 +38,7 @@ const loadUserPark = async function () {
       park.directionsURL = data[0].directionsURL;
       park.contacts = data[0].contacts;
       park.url = data[0].url;
+      park.description = data[0].description
 
       console.log(park)
 
@@ -50,13 +51,19 @@ const renderData = function () {
   const title = document.getElementById('title'); 
   title.innerText = `${park.name}`;
 
+  /* Park Photo */ 
+
+  const image = document.getElementById('park-photo');
+  image.setAttribute('src', `${park.images[1].url}`)
+
+
   /* Address*/
   const address = document.getElementById('address');
-  let parkAds = park.addresses
+  const parkAds = park.addresses
 
   for (let i=0; i < parkAds.length; i++){
     if (parkAds[i].type.toLowerCase() == 'physical'){
-    address.innerText = `${parkAds[i].line1}, ${parkAds[i].line2} ${parkAds[i].line3}, ${parkAds[i].city}, ${parkAds[i].stateCode} ${parkAds[i].postalCode}`
+    address.innerText = `${parkAds[i].line1} ${parkAds[i].line2} ${parkAds[i].line3} ${parkAds[i].city} ${parkAds[i].stateCode} ${parkAds[i].postalCode}`
     }
   }
   if (park.directionsURL){
@@ -77,9 +84,9 @@ const renderData = function () {
 
   contact.append(phoneNumber, website, email)
 
-  /* History */ 
-  
-
+  /* Description */ 
+  const description = document.getElementById('description');
+  description.innerText = `${park.description}`
 }
 
 
