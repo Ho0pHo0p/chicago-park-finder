@@ -1,5 +1,5 @@
 // ------- GLOBAL VARIABLES -------
-key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2'
+const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2'
 
 // DOM query selectors 
 
@@ -9,6 +9,13 @@ const searchMenu = document.querySelector('.search-menu');
 const filterBtn = document.querySelector('.fa-filter');
 const searchBar = document.querySelector('#search-bar');
 const emblem = document.querySelector('.fa-tree');
+const parkContainer = document.getElementById("park-list");
+
+// Local Storage 
+
+let userStateCode = '';
+let userParkChoice = '';
+let parkId = '';
 
 // Objects 
 
@@ -49,9 +56,9 @@ function searchSubmit(e) {
   let userStateChoice = searchBar.value;
   for(let i=0; i < stateCodes.name.length; i++){
     if (userStateChoice === stateCodes.name[i]){
-      let userStateCode =  stateCodes.code[i].toLocaleLowerCase()
+      let userStateCode = stateCodes.code[i].toLowerCase()
       loadParks(userStateCode);
-      userStateCode = ''; 
+      userStateCode = ``
     }
   }
 }
@@ -97,6 +104,37 @@ function autoCompleteState() {
   }
 }
 
+async function loadParks(userStateCode) {
+  const parksApi = `https://developer.nps.gov/api/v1/parks?stateCode=${userStateCode}&api_key=${key}`;
+  const stateContainer = document.getElementById("state-list");
+
+  axios.get(parksApi)
+    .then((res)=> {
+      console.log(res)
+
+      for (let i = 0; i < res.data.data.length; i++) {
+        parks.id[i] = res.data.data[i].id;
+        parks.name[i] = res.data.data[i].fullName;
+        parks.description[i] = res.data.data[i].description;
+        parks.images[i] = res.data.data[i].images
+      }
+         
+      parkContainer.innerHTML= ''
+
+      for (let i=0; i < parks.name.length; i++) {
+        let stateParkItem = document.createElement('li');
+        stateParkItem.innerText = `${parks.name[i]}`
+        parkContainer.append(stateParkItem);
+
+        localStorage.setItem("userState", `${userStateCode}`)
+      }
+    })
+    .catch((e) => {
+      console.log("error", e);
+    });
+  
+}
+
 async function loadActivity() {
 
   const activityApi = `https://developer.nps.gov/api/v1/activities?&api_key=${key}`;
@@ -123,41 +161,26 @@ async function loadActivity() {
 
 }
 
-async function loadParks(userStateCode) {
-  const parksApi = `https://developer.nps.gov/api/v1/parks?stateCode=${userStateCode}&api_key=${key}`;
-  const parkContainer = document.getElementById("park-list");
-  const stateContainer = document.getElementById("state-list");
-
-  axios.get(parksApi)
-    .then((res)=> {
-      console.log(res)
-
-      for (let i = 0; i < res.data.data.length; i++) {
-        parks.id[i] = res.data.data[i].id;
-        parks.name[i] = res.data.data[i].fullName;
-        parks.description[i] = res.data.data[i].description;
-        parks.images[i] = res.data.data[i].images
-      }
-         
-      parkContainer.innerHTML= ''
-
-      for (let i=0; i < parks.name.length; i++) {
-        let stateParkItem = document.createElement('li');
-        stateParkItem.innerText = `${parks.name[i]}`
-        parkContainer.append(stateParkItem);
-      }
-    })
-    .catch((e) => {
-      console.log("error", e);
-    });
-  
-}
-
 
 /*---RUN FUNCTIONS---*/
 featureExpand.addEventListener('click', (e)=>{
   loadActivity();
 })
+
+parkContainer.addEventListener('click', (e) => {
+  if (e.target.tagName === 'LI'){
+    const userParkChoice = e.target.innerText; 
+    console.log(userParkChoice);
+    localStorage.setItem("userParkChoice", `${userParkChoice}`);
+    for (let i= 0; i < parks.name.length; i++){
+      if (parks.name[i] === userParkChoice) {
+        localStorage.setItem("parkId", `${parks.id[i]}`); 
+      }
+    }
+  }
+})
+
+
+
 searchFormFunc();
 autoCompleteState();
-
