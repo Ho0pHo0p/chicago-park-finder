@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find a Chicago Park</title>
+  <title>National Park Search</title>
 </head>
 
 <link rel="stylesheet" href="/css/home-page.css">
@@ -25,7 +25,7 @@
   <div class="main-section">
     <section class="section1">
       <h2>Find a National Park</h2>
-      <form autocomplete="off">
+      <form autocomplete="off" id="search-form">
         <div class="search-bar-container">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input id="search-bar" type="text" placeholder="Search State or Park">
@@ -34,6 +34,8 @@
         <div class="search-menu">
           <div class="search search-state">
             <ul id="state-list">
+            </ul>
+            <ul id="park-list">
             </ul>
           </div>
           <div class="search search-park">

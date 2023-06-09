@@ -12,6 +12,13 @@ const emblem = document.querySelector('.fa-tree');
 
 // Objects 
 
+const parks = {
+  name: [],
+  id: [],
+  description: [],
+  images: [],
+}
+
 const activity = {
   id: [],
   name:[]
@@ -19,22 +26,42 @@ const activity = {
 
 const stateCodes = {
   name: [
-    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
   ],
   code: [
-    "AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UM", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS","MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY","NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
   ],
 }
 /*--- EVENT LISTENERS ----*/
-searchBar.addEventListener("focus", ()=> {
-  searchMenu.classList.remove("hidden"); 
-})
+
+function searchFormFunc() {
+  const searchForm = document.getElementById("search-form");
+  searchBar.addEventListener("focus", ()=> {
+    searchMenu.classList.remove("hidden"); 
+  });
+  searchForm.addEventListener("submit", searchSubmit);
+
+  function searchSubmit(e) {
+    e.preventDefault();
+    let userStateChoice = searchBar.value;
+    for(let i=0; i < stateCodes.name.length; i++){
+      if (userStateChoice === stateCodes.name[i]){
+        let userStateCode =  stateCodes.code[i].toLocaleLowerCase()
+        loadParks(userStateCode);
+        userStateCode = ''; 
+      }
+    }
+  }
+}
+
+
+searchFormFunc();
 
 
 /*----- FUNCTIONS----*/
 
-// auto-complete
-function autoComplete() {
+// auto-complete-state
+function autoCompleteState() {
   let userInput = document.getElementById("search-bar");
   const stateContainer = document.getElementById("state-list");
   userInput.addEventListener('input', autoCompleteMe);
@@ -67,10 +94,50 @@ function autoComplete() {
   function selectItem({ target }) {
     if (target.tagName === 'LI') {
       userInput.value = target.innerText; 
-      stateContainer.innerHTML = ''
+      stateContainer.innerHTML = '';
     }
   }
 }
+
+
+//auto-complete-park
+// function autoCompletePark() {
+//   let userInput = document.getElementById("search-bar");
+//   const parkContainer = document.getElementById("park-list");
+//   userInput.addEventListener('input', autoCompleteMe);
+//   parkContainer.addEventListener('click', selectItem);
+
+
+//   function autoCompleteMe({target}){
+//     let data = target.value;
+//     parkContainer.innerHTML = ''
+//     if (data.length){
+//       let autoCompleteValues = autoCompleteCheck(data); 
+//       autoCompleteValues.forEach(value => {addItem(value); });
+//     }
+//   }
+  
+//   function autoCompleteCheck(inputValue){
+//     let parkNames = parks.name; 
+//     let park = [...parkNames]
+//     return park.filter (
+//       value => value.toLowerCase().includes(inputValue.toLowerCase())
+//     );
+//   }
+
+//   function addItem(value){
+//     let newPark = document.createElement('li');
+//     newPark.innerText = `${value}`
+//     parkContainer.append(newPark)
+//   }
+
+//   function selectItem({ target }) {
+//     if (target.tagName === 'LI') {
+//       userInput.value = target.innerText; 
+//       parkContainer.innerHTML = ''
+//     }
+//   }
+// }
 
 //Features
 featureExpand.addEventListener('click', (e)=>{
@@ -105,6 +172,29 @@ async function loadActivity() {
 
 }
 
+async function loadParks(userStateCode) {
+  const parksApi = `https://developer.nps.gov/api/v1/parks?stateCode=${userStateCode}&api_key=${key}`;
+
+  axios.get(parksApi)
+    .then((res)=> {
+      console.log(res)
+
+      for (let i = 0; i < res.data.data.length; i++) {
+        parks.id[i] = res.data.data[i].id;
+        parks.name[i] = res.data.data[i].fullName;
+        parks.description[i] = res.data.data[i].description;
+        parks.images[i] = res.data.data[i].images
+      }
+    })
+
+    .catch((e) => {
+      console.log("error", e);
+    });
+  
+}
+
+
 /*---RUN FUNCTIONS---*/
 
-autoComplete();
+autoCompleteState();
+// autoCompletePark();
