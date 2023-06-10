@@ -8,8 +8,12 @@ const featureExpand = document.querySelector('.features-expand');
 const searchMenu = document.querySelector('.search-menu'); 
 const filterBtn = document.querySelector('.fa-filter');
 const searchBar = document.querySelector('#search-bar');
+const submitBtn = document.getElementById('submit-btn');
 const emblem = document.querySelector('.fa-tree');
 const parkContainer = document.getElementById("park-list");
+const stateContainer = document.getElementById('state-list')
+const searchLabel = document.getElementById('search-label');
+const searchForm = document.getElementById("search-form");
 
 // Local Storage 
 
@@ -21,9 +25,7 @@ let parkId = '';
 
 const parks = {
   name: [],
-  id: [],
-  description: [],
-  images: [],
+  id: []
 }
 
 const activity = {
@@ -40,28 +42,21 @@ const stateCodes = {
   ],
 }
 
-/*--- EVENT LISTENERS ----*/
-
-function searchFormFunc() {
-  const searchForm = document.getElementById("search-form");
-  searchBar.addEventListener("focus", ()=> {
-    searchMenu.classList.remove("hidden"); 
-  });
-  searchForm.addEventListener("submit", searchSubmit);
-
-}
+/*---  Functions ----*/
 
 function searchSubmit(e) {
   e.preventDefault();
   let userStateChoice = searchBar.value;
   for(let i=0; i < stateCodes.name.length; i++){
-    if (userStateChoice === stateCodes.name[i]){
-      let userStateCode = stateCodes.code[i].toLowerCase()
-      loadParks(userStateCode);
+  if (userStateChoice.toLowerCase() === stateCodes.name[i].toLocaleLowerCase()){
+      let userStateCode = stateCodes.code[i].toLowerCase();
+      loadParksByState(userStateCode);
       userStateCode = ``
+
     }
   }
 }
+
 
 function autoCompleteState() {
   let userInput = document.getElementById("search-bar");
@@ -72,6 +67,7 @@ function autoCompleteState() {
   stateContainer.addEventListener('click', selectItem);
 
   function autoCompleteMe({target}){
+
     parkContainer.innerHTML = ''
     let data = target.value;
     stateContainer.innerHTML = ''
@@ -104,7 +100,17 @@ function autoCompleteState() {
   }
 }
 
-async function loadParks(userStateCode) {
+
+function loadStates () {
+  let states = stateCodes.name; 
+  for (let state of states){
+    let initialStates = document.createElement('li');
+    initialStates.innerText=`${state}`
+    stateContainer.append(initialStates)
+  }
+}
+
+async function loadParksByState(userStateCode) {
   const parksApi = `https://developer.nps.gov/api/v1/parks?stateCode=${userStateCode}&api_key=${key}`;
   const stateContainer = document.getElementById("state-list");
 
@@ -115,10 +121,8 @@ async function loadParks(userStateCode) {
       for (let i = 0; i < res.data.data.length; i++) {
         parks.id[i] = res.data.data[i].id;
         parks.name[i] = res.data.data[i].fullName;
-        parks.description[i] = res.data.data[i].description;
-        parks.images[i] = res.data.data[i].images
       }
-         
+      stateContainer.innerHTML = `<li>${userStateCode.toUpperCase()}</li>`
       parkContainer.innerHTML= ''
 
       for (let i=0; i < parks.name.length; i++) {
@@ -127,6 +131,10 @@ async function loadParks(userStateCode) {
         parkContainer.append(stateParkItem);
 
         localStorage.setItem("userState", `${userStateCode}`)
+
+        stateParkItem.addEventListener("click", ()=>{
+          
+        })
       }
     })
     .catch((e) => {
@@ -163,6 +171,9 @@ async function loadActivity() {
 
 
 /*---RUN FUNCTIONS---*/
+
+searchForm.addEventListener("submit", searchSubmit);
+
 featureExpand.addEventListener('click', (e)=>{
   loadActivity();
 })
@@ -180,7 +191,20 @@ parkContainer.addEventListener('click', (e) => {
   }
 })
 
+searchForm.addEventListener("focusin", ()=> {
+    searchMenu.classList.remove("hidden");
+})
+
+searchBar.addEventListener("input", ()=> {
+  searchMenu.classList.remove("hidden");
+})
 
 
-searchFormFunc();
+
+loadStates();
 autoCompleteState();
+
+
+
+
+

@@ -63,7 +63,7 @@ const renderData = function () {
 
   for (let i=0; i < parkAds.length; i++){
     if (parkAds[i].type.toLowerCase() == 'physical'){
-    address.innerText = `${parkAds[i].line1} ${parkAds[i].line2} ${parkAds[i].line3} ${parkAds[i].city} ${parkAds[i].stateCode} ${parkAds[i].postalCode}`
+    address.innerText = `${parkAds[i].line2} ${parkAds[i].line3}, ${parkAds[i].city} ${parkAds[i].stateCode} ${parkAds[i].postalCode}`
     }
   }
   if (park.directionsURL){

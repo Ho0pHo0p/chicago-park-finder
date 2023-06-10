@@ -109,9 +109,10 @@ button {
   align-items: center;
   gap: 8px;
 
+
 }
 
-input, input:focus{
+input {
   outline: none;
   border: none;
   background-color: transparent;
@@ -128,8 +129,7 @@ input, input:focus{
   position: absolute;
   top: 180px;
   width: 75vw;
-  padding: 16px;
-  padding-top: 0px;
+  padding: 20px 16px;
 
 
   background-color: var(--back-color2);
@@ -139,29 +139,49 @@ input, input:focus{
 
   display: flex;
   flex-flow: column;
+  justify-content: flex-start;
   gap: 8px;
 }
 
-.search {
-  margin-left: 20px;
+.search p {
+  color: rgba(113, 121, 113, 1);
+  padding-top: 5px;
+}
 
+#search-label-state {
+  padding-top: 10px;
+  font-family: var(--p-font);
+  font-weight: 500
+}
+
+#search-label-park {
+  padding-top: 10px;
+  font-family: var(--p-font);
+  font-weight: 500
+}
+
+.search {
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 8px;
 
-  max-height: 30vh;
-  overflow: scroll;
+  max-height: 40vh;
+  overflow-y: scroll; 
 
+  margin-left: 1rem;
+}
 
+.search ul {
+  width: 90%;
 }
 
 .search li {
   background-color: var(--back-color1);
-  width: 65vw;
-  height: 12px;
+  height: auto;
   padding: 10px;
+  width: 100%;
 
   border-radius: 4px;
   border-bottom: 1px solid rgba(113, 121, 113, .2);;
@@ -174,12 +194,14 @@ input, input:focus{
   color: rgba(113, 121, 113, 1);
   font-size: 1rem;
   padding-top: 8px;
+  padding-left: 8px;
 }
 
 .fa-filter {
   color: var(--accent-color1);
   font-size: 1rem;
   padding-top: 8px;
+  padding-right: 8px;
 }
 
 /* Section 2 */
@@ -336,10 +358,16 @@ footer a {
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 460px) {
   h1 {
     font-size: 1rem;
   }
+
+  .search li {
+    width: 67vw;
+  }
+
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -424,19 +452,19 @@ footer a {
   }
 
   .search-bar-container {
-    position: relative;
     border-radius: 6px;
     width: 50vw;
+
   }
 
   .search-menu {
-    top: 240px;
+    top: 235px;
     width: 50vw;
   }
 
-  .search li {
 
-    max-width: 48vw;
+  .search li {
+    width: 100%;
   }
 
   .categories {
@@ -619,11 +647,12 @@ footer a {
     width: 55vw;
     align-self: center;
     margin: 60px 190px 0px 190px;
+  }
 
   .search-bar-container {
     position: relative;
-     border-radius: 6px;
-     width: 50vw;
+    border-radius: 6px;
+    width: 50vw;
   }
   
   .search-menu {
@@ -632,19 +661,13 @@ footer a {
     }
   
     .search li {
-  
       max-width: 48vw;
     }
-  }
+
 
   .section1 h2 {
     font-size: 45px;
     margin-bottom: 1rem;
-  }
-
-  .search-bar-container {
-    width: auto;
-    height: 3rem;
   }
 
   .section2 {
@@ -709,3 +732,4 @@ footer a {
     font-size: 72px;
     grid-column: 2;
   }
+}

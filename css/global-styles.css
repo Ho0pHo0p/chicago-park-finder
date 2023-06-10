@@ -60,3 +60,49 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+body {
+  display: flex;
+  flex-flow: column;
+
+  font-family: var(--p-font);
+  color: var(--main-text-color);
+  background-color: var(--back-color1);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--header-font);
+  font-weight: 400;
+  color: var(--main-text-color);
+}
+
+h1 {
+
+  font-size: 22px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 24px;
+  padding: 8px 0px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+a {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+button {
+  background-color: var(--main-color);
+  color: var(--back-color2);
+  border-radius: 5px;
+  padding: 10px 24px;
+  border: none;
+}

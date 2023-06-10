@@ -1,3 +1,121 @@
 img {
 width: 20%;
 }
+
+/* Header */
+
+header {
+  display: grid;
+  grid-template-columns: .5fr 1fr .5fr;
+  padding: 16px 16px 0px 16px;
+  gap: 0;
+}
+
+header button {
+  background-color: transparent;
+  color: #1e1e1e;
+  grid-column: 1;
+margin-bottom: 0;
+  text-align: left;
+
+}
+
+header h3 {
+  grid-column: 2;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Main Section */
+
+.main-section {
+  margin: 32px;
+  margin-top: 16px;
+  font-family: var(--p-font);
+  display: flex;
+  flex-flow: column;
+}
+
+.main-section section {
+  padding-top: 10px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid gainsboro;
+  line-height: 1.5;
+}
+
+.main-section h2, h3 {
+  font-family: var(--p-font);
+}
+
+/* Section 1 -- title and photo */ 
+
+.section1 {
+  display: flex;
+  flex-flow: column;
+}
+
+.section1 h1{
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+.section1 img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* Section2 -- Accessibility */
+
+.section2 {
+  line-height: 1.5;
+}
+
+.section2 li {
+  list-style:inside;
+}
+
+/* Section 3 -- Location */
+
+.section3 a{
+  font-weight: 100;
+  color: var(--main-color);
+  text-decoration:underline;
+}
+
+/* Section 4 -- Contact */
+
+.section4 a{
+  font-weight: 200;
+}
+
+.contact-container {
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+
+  color: var(--main-color);
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 768px) {
+  .section1 {
+    flex-flow: row;
+    gap:16px;
+    align-items: center;
+  }
+
+  .section1 h1 {
+    font-size: 3rem;
+    width: 40vw;
+  }
+
+  .section1 img {
+    width: 60vw;
+  }
+}
+
+@media only screen and (min-width: 992px) {...}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
+
+
