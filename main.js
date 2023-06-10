@@ -191,12 +191,18 @@ parkContainer.addEventListener('click', (e) => {
   }
 })
 
-searchForm.addEventListener("focusin", ()=> {
+searchForm.addEventListener("focus", ()=> {
     searchMenu.classList.remove("hidden");
 })
 
 searchBar.addEventListener("input", ()=> {
   searchMenu.classList.remove("hidden");
+})
+
+searchForm.addEventListener("mouseout"()=>{
+  searchBar.addEventListener("input", ()=> {
+    searchMenu.classList.remove("hidden");
+  })
 })
 
 
