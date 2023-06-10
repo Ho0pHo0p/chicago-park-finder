@@ -199,14 +199,6 @@ searchBar.addEventListener("input", ()=> {
   searchMenu.classList.remove("hidden");
 })
 
-searchForm.addEventListener("mouseout"()=>{
-  searchBar.addEventListener("input", ()=> {
-    searchMenu.classList.remove("hidden");
-  })
-})
-
-
-
 loadStates();
 autoCompleteState();
 
