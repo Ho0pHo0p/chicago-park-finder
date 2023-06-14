@@ -111,62 +111,57 @@ function loadStates () {
 }
 
 async function loadParksByState(userStateCode) {
-  const parksApi = `https://developer.nps.gov/api/v1/parks?stateCode=${userStateCode}&api_key=${key}`;
-  const stateContainer = document.getElementById("state-list");
 
-  axios.get(parksApi)
-    .then((res)=> {
-      console.log(res)
+  try{
+    const res = await axios.get(`https://developer.nps.gov/api/v1/parks?stateCode=${userStateCode}&api_key=${key}`);
 
-      for (let i = 0; i < res.data.data.length; i++) {
-        parks.id[i] = res.data.data[i].id;
-        parks.name[i] = res.data.data[i].fullName;
-      }
-      stateContainer.innerHTML = `<li>${userStateCode.toUpperCase()}</li>`
-      parkContainer.innerHTML= ''
+    const stateContainer = document.getElementById("state-list");
 
-      for (let i=0; i < parks.name.length; i++) {
-        let stateParkItem = document.createElement('li');
-        stateParkItem.innerText = `${parks.name[i]}`
-        parkContainer.append(stateParkItem);
+    console.log(res)
 
-        localStorage.setItem("userState", `${userStateCode}`)
+    for (let i = 0; i < res.data.data.length; i++) {
+      parks.id[i] = res.data.data[i].id;
+      parks.name[i] = res.data.data[i].fullName;
+    }
+    stateContainer.innerHTML = `<li>${userStateCode.toUpperCase()}</li>`
+    parkContainer.innerHTML= ''
 
-        stateParkItem.addEventListener("click", ()=>{
+    for (let i=0; i < parks.name.length; i++) {
+      let stateParkItem = document.createElement('li');
+      stateParkItem.innerText = `${parks.name[i]}`
+      parkContainer.append(stateParkItem);
+
+      localStorage.setItem("userState", `${userStateCode}`)
+
+      stateParkItem.addEventListener("click", ()=>{
           
-        })
-      }
-    })
-    .catch((e) => {
-      console.log("error", e);
-    });
+      })
+    }} catch (e) {
+    console.error(e);
+    }
   
 }
 
 async function loadActivity() {
 
-  const activityApi = `https://developer.nps.gov/api/v1/activities?&api_key=${key}`;
+  try {
+    let res = await axios.get(`https://developer.nps.gov/api/v1/activities?&api_key=${key}`)
 
-  axios.get(activityApi)
-    .then((res) => {
-      console.log('response', res);
+    console.log(res);
 
-      for (let i = 0; i < res.data.data.length; i++) {
-        activity.id[i] = res.data.data[i].id;
-        activity.name[i] = res.data.data[i].name;
+    for (let i = 0; i < res.data.data.length; i++) {
+      activity.id[i] = res.data.data[i].id;
+      activity.name[i] = res.data.data[i].name;
+      const newActivity = document.createElement('li');
+      newActivity.classList.add('act-feature');
+      newActivity.innerText = `${activity.name[i]}`;
+      featureContainer.append(newActivity);  
+    }
+  } catch (e) {
+    console.error(e);
+  }
 
-        const newActivity = document.createElement('li');
-        newActivity.classList.add('act-feature');
-        newActivity.innerText = `${activity.name[i]}`;
-
-        featureContainer.append(newActivity);
-      }
-
-    })
-    .catch((e) => {
-      console.log("error", e);
-    });
-
+  
 }
 
 
