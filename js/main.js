@@ -2,9 +2,6 @@
 const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2'
 
 // DOM query selectors 
-
-const featureContainer = document.querySelector('.features-list'); 
-const featureExpand = document.querySelector('.features-expand');
 const searchMenu = document.querySelector('.search-menu'); 
 const filterBtn = document.querySelector('.fa-filter');
 const searchBar = document.querySelector('#search-bar');
@@ -56,7 +53,6 @@ function searchSubmit(e) {
     }
   }
 }
-
 
 function autoCompleteState() {
   let userInput = document.getElementById("search-bar");
@@ -168,10 +164,6 @@ async function loadActivity() {
 /*---RUN FUNCTIONS---*/
 
 searchForm.addEventListener("submit", searchSubmit);
-
-featureExpand.addEventListener('click', (e)=>{
-  loadActivity();
-})
 
 parkContainer.addEventListener('click', (e) => {
   if (e.target.tagName === 'LI'){
