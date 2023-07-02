@@ -1,6 +1,4 @@
 import State, { createStates } from "./stateClass.js";
-import autoComplete, {statesFiltered} from "./autocomplete.js";
-import renderMenu from "./renderAutoComplete.js";
 
 
 export const searchForm = document.getElementById('search-form');
@@ -13,14 +11,9 @@ export const stateArray = createStates();
 export default function searchState(e){
   e.preventDefault();
   let userInput = searchBar.value.toUpperCase();
-
     for (let state of stateArray){
-      if (userInput === state.name.toUpperCase() || userInput === state.code){
-        state.findStateParks()
-      }
+        if (userInput === state.name.toUpperCase() || userInput === state.code){
+          state.findStateParks()
+        }
     }
 }
-
-renderMenu();
-searchForm.addEventListener('submit', searchState)
-searchBar.addEventListener('input', autoComplete)

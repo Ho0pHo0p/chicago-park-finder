@@ -11,6 +11,7 @@ export default class State {
   }
   
   findStateParks(){
+    if (!this.parks){
     fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${this.code}&api_key=${key}`)
       .then((res)=> res.json())
       .then((data) => {
@@ -20,7 +21,10 @@ export default class State {
       .catch(function(err){
         console.log('error', err)
       })
-  }
+    }else{
+      console.log(this.parks)
+    }
+  } 
 }
 
 /* Function that takes data from stateData and creates 50 States */
