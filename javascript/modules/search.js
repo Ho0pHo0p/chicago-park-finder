@@ -1,7 +1,9 @@
 import State, { createStates } from "./stateClass.js";
-import autoComplete from "./autocomplete.js";
+import autoComplete, {statesFiltered} from "./autocomplete.js";
+import renderMenu from "./renderAutoComplete.js";
 
-const searchForm = document.getElementById('search-form');
+
+export const searchForm = document.getElementById('search-form');
 export const searchBar = document.getElementById('search-bar')
 
 /* Array of all state objects */
@@ -19,7 +21,6 @@ export default function searchState(e){
     }
 }
 
+renderMenu();
 searchForm.addEventListener('submit', searchState)
 searchBar.addEventListener('input', autoComplete)
-
-
