@@ -2,18 +2,20 @@
 
 const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
 
+/* State class includes name, state code, and findStatePark method */
 export default class State {
   constructor(stateName, stateId){
     this.name = stateName, 
     this.code = stateId,
-    this.parks = [];
+    this.parks;
   }
   
   findStateParks(){
     fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${this.code}&api_key=${key}`)
       .then((res)=> res.json())
       .then((data) => {
-        console.log(data)
+        this.parks = (data.data)
+        console.log(this)
       })
       .catch(function(err){
         console.log('error', err)
@@ -21,6 +23,7 @@ export default class State {
   }
 }
 
+/* Function that takes data from stateData and creates 50 States */
 export function createStates(){
   const stateArray = []; 
   for (let i=0; i < 50; i++){
