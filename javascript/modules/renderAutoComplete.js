@@ -1,4 +1,4 @@
-import { parksFiltered, statesFiltered} from "./autocomplete.js";
+import autocomplete, { parksFiltered, statesFiltered} from "./autocomplete.js";
 import { searchForm, searchBar, stateArray } from "./search.js";
 
 const searchMenu = document.querySelector('.search-menu');
@@ -10,16 +10,24 @@ const parkElements = document.querySelectorAll('.listed-park');
 export default function renderMenu(){
   renderDefaultStates();
   renderDefaultParks();
+  autofillInput();
 
   searchBar.addEventListener('focus', ()=>{
-      searchMenu.classList.remove('hidden')
+    searchMenu.classList.remove('hidden')
   })
   searchBar.addEventListener('input', ()=>{
     searchMenu.classList.remove('hidden')
   })
-  searchBar.addEventListener('focusout', ()=>{
-    searchMenu.classList.add('hidden')
-  })
+}
+
+export function autofillInput(){
+  const listedStates = document.querySelectorAll('.listed-state');
+  for (let i = 0; i < listedStates.length; i++){
+    listedStates[i].addEventListener('click', (e)=>{
+      searchBar.value = e.target.innerText; 
+      autocomplete();
+    })
+  }
 }
 
 export function renderStates(){
@@ -52,33 +60,31 @@ export function renderParks(){
     let li = parkElements[i];
     li.remove();
   }
-  if(parksFiltered.length >= 5){
+  if (parksFiltered.length > 5){
     for(let i = 0; i <= 5; i++){
     const parkElement = document.createElement('li');
     parkElement.classList.add('listed-park')
-    parkElement.innerText = `${parksFiltered[i].name}, ${parksFiltered[i].states}`
-    console.log(parkElement)
+    parkElement.innerText = `${parksFiltered[i].fullName}`
     parkContainer.append(parkElement)
     }
-  }else if (parksFiltered.length < 5){
+  }else if (parksFiltered.length <= 5){
     for(let i = 0; i < parksFiltered.length; i++){
       const parkElement = document.createElement('li');
       parkElement.classList.add('listed-park')
-      parkElement.innerText = `${parksFiltered[i].name}, ${parksFiltered[i].states}`
-      console.log(parkElement)
+      parkElement.innerText = `${parksFiltered[i].name}`
       parkContainer.append(parkElement)
     }
   }
 }
 
 async function renderDefaultParks(){
-  console.log('start')
+  if (!stateArray.parks){
   const alabamaParks = await stateArray[0].findStateParks();
+  }
   for(let i = 0; i < 5; i++){
     const parkElement = document.createElement('li');
     parkElement.classList.add('listed-state')
-    console.log(stateArray[0].parks)
-    parkElement.innerText = `${stateArray[0].parks[i].name} - ${stateArray[0].parks[i].states}`
+    parkElement.innerText = `${stateArray[0].parks[i].name}`
     parkContainer.append(parkElement)
   }
   

@@ -7,6 +7,7 @@ export default class State {
   constructor(stateName, stateId){
     this.name = stateName, 
     this.code = stateId,
+    this.topParks;
     this.parks;
   }
   
@@ -15,15 +16,11 @@ export default class State {
       try{
       const res = await fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${this.code}&api_key=${key}`);
       const data = await res.json();
-      console.log(data)
       this.parks = data.data
-      console.log('middle')
       }
       catch {
         console.log('error', err)
       }
-    }else{
-      console.log(this.parks)
     }
   } 
 }

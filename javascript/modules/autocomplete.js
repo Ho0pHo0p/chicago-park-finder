@@ -1,15 +1,16 @@
 import { searchBar, stateArray } from "./search.js";
 import { renderParks, renderStates } from "./renderAutoComplete.js";
 import { key } from "./stateClass.js";
+import { autofillInput } from "./renderAutoComplete.js";
 
 export let statesFiltered = [];
 export let parksFiltered = [];
 
-export default function autocomplete(e){
-  let userInput = e.target.value; 
+export default async function autocomplete(e){
+  let userInput = searchBar.value;
   filterStateLetters(userInput);
-  filterParks(statesFiltered)
   renderStates();
+  await filterParks(statesFiltered)
   renderParks();
 }
   
@@ -24,22 +25,20 @@ function filterStateLetters(userInput){
   }
 }
 
-function filterParks(statesFiltered){
+async function filterParks(statesFiltered){
   parksFiltered = [];
   if(statesFiltered){
     const topState = statesFiltered[0];
-    console.log(topState)
-    fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${topState.code}&limit=5&api_key=${key}`)
-      .then((res)=> res.json())
-      .then((data) => {
-        let topStateParks = (data.data)
-        parksFiltered.push(...topStateParks)
-        console.log(parksFiltered)
-      })
-      .catch(function(err){
-        console.log('error', err)
-      })
-  }else if(!statesFiltered){
-    
+    if(!topState.topParks){
+    try{
+      const res = await fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${topState.code}&limit=5&api_key=${key}`);
+      const data = await res.json();
+      parksFiltered = data.data
+      topState.topParks = parksFiltered; 
+      }
+      catch {
+        console.log('error')
+      }
+    }
   }
 }
