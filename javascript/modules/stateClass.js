@@ -1,6 +1,6 @@
  import { stateInfo } from "./stateData.js";
 
-const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
+export const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
 
 /* State class includes name, state code, and findStatePark method */
 export default class State {
@@ -10,17 +10,18 @@ export default class State {
     this.parks;
   }
   
-  findStateParks(){
+  async findStateParks(){
     if (!this.parks){
-    fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${this.code}&api_key=${key}`)
-      .then((res)=> res.json())
-      .then((data) => {
-        this.parks = (data.data)
-        console.log(this)
-      })
-      .catch(function(err){
+      try{
+      const res = await fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${this.code}&api_key=${key}`);
+      const data = await res.json();
+      console.log(data)
+      this.parks = data.data
+      console.log('middle')
+      }
+      catch {
         console.log('error', err)
-      })
+      }
     }else{
       console.log(this.parks)
     }

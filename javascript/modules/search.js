@@ -1,11 +1,11 @@
 import State, { createStates } from "./stateClass.js";
 
-
 export const searchForm = document.getElementById('search-form');
 export const searchBar = document.getElementById('search-bar')
 
 /* Array of all state objects */
-export const stateArray = createStates();
+export const stateArray = createStates()
+
 
 /* Finds parks for specified state */
 export default function searchState(e){

@@ -5,5 +5,6 @@ import searchState from "./modules/search.js";
 import renderMenu from "./modules/renderAutoComplete.js";
 
 renderMenu();
-searchForm.addEventListener('submit', searchState)
 searchBar.addEventListener('input', autoComplete)
+searchForm.addEventListener('submit', searchState)
+
