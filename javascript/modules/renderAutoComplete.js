@@ -1,5 +1,6 @@
 import autocomplete, { parksFiltered, statesFiltered} from "./autocomplete.js";
 import { searchForm, searchBar, stateArray } from "./search.js";
+import formSubmit from "./searchFormSubmit.js"
 
 const searchMenu = document.querySelector('.search-menu');
 const stateContainer = document.getElementById('state-list');
@@ -24,8 +25,8 @@ export function autofillInput(){
   const listedStates = document.querySelectorAll('.listed-state');
   for (let i = 0; i < listedStates.length; i++){
     listedStates[i].addEventListener('click', (e)=>{
-      searchBar.value = e.target.innerText; 
-      autocomplete();
+      searchBar.value = e.target.innerText;
+      formSubmit();
     })
   }
 }
