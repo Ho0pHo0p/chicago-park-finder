@@ -106,3 +106,7 @@ button {
   padding: 10px 24px;
   border: none;
 }
+
+input {
+  border: none;
+}

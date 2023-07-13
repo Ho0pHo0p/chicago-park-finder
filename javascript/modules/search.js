@@ -1,5 +1,6 @@
 import State, { createStates } from "./stateClass.js";
 
+
 export const searchForm = document.getElementById('search-form');
 export const searchBar = document.getElementById('search-bar')
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/globalStyles.css">
+  <link rel="stylesheet" href="/css/searchPage.css">
+</head>
+<body>
+  <div class="box-shadow">
+    <header>
+      <div class="header">
+        <nav class="mobile-menu mobile hidden">
+          <i class="fa-solid fa-bars"></i>
+        </nav>
+        <i class="fa-solid fa-tree emblem" id="tree-emblem"></i>
+        <h1>National Park Search</h1>
+        <a href="#" class="language ">EN<i class="fa-solid fa-chevron-down"></i></a>
+      </div>
+    </header>
+    <section id="search-bar-section">
+      <form>
+        <div id="search-bar_searchpage"><i class="fa-solid fa-magnifying-glass"></i><input id="search-input_searchpage" type="text" placeholder="Search Activity or Park"></div>
+      </form>
+    </section>
+  </div>
+  <section id="park-list_searchpage">
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="https://kit.fontawesome.com/4c73b9f07c.js" crossorigin="anonymous"></script>
+  <script src="/javascript/app2.js" type="module"></script>
+</body>
+</html>
