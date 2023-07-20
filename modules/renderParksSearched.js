@@ -1,4 +1,4 @@
-import { stateArray } from "./search.js";
+import { stateArray } from "./searchState.js";
 import stateClass, { key } from "./stateClass.js"
 
 const userState= localStorage.getItem('stateSearched').toUpperCase();
@@ -6,7 +6,7 @@ let userStateCode;
 let stateObjectArray;
 let stateObject;
 
-export async function findParks(){
+export async function displayParks(){
   for (let state of stateArray){
     if (userState === state.name.toUpperCase()){
      stateObjectArray = stateArray.slice( stateArray.indexOf(state), stateArray.indexOf(state) + 1  )

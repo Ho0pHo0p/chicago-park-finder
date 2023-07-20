@@ -1,3 +1,5 @@
+import State from "./stateClass.js";
+
 /* State Names and State Codes */
 
 export const stateInfo = {
@@ -9,3 +11,20 @@ export const stateInfo = {
   ],
 }
 
+function createStateList(){
+  let stateArray = [];
+  for (let i=0; i < 50; i++){
+      let state = new State(stateInfo.name[i], stateInfo.code[i]);
+      stateArray.push(state)
+      console.log()
+  }
+  console.log(stateArray)
+  return stateArray
+}
+
+let stateArray = createStateList();
+export default stateArray
+
+export function createState(){
+
+}

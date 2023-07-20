@@ -1,7 +1,8 @@
-import { searchBar, stateArray } from "./search.js";
+import { searchBar, stateArray } from "./searchState.js";
 import { renderParks, renderStates } from "./renderAutoComplete.js";
-import { key } from "./stateClass.js";
+import { key } from "../mods/topParksAPI.js"
 import { autofillInput } from "./renderAutoComplete.js";
+import topParks from "../mods/topParksAPI.js";
 
 export let statesFiltered = [];
 export let parksFiltered = [];

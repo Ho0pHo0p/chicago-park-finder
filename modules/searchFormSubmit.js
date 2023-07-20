@@ -1,5 +1,5 @@
-import {searchBar, searchForm} from './search.js'
-import { stateArray } from './search.js';
+import {searchBar, searchForm} from './searchState.js'
+import { stateArray } from './searchState.js';
 
 export default async function submitSearchForm(){
   const userState = searchBar.value;
@@ -14,5 +14,5 @@ export default async function submitSearchForm(){
 
 
 function loadSearchPage(){
-  window.location.assign('searchPage.html')
+  window.location.assign('search.html')
 }

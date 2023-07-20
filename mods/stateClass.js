@@ -1,7 +1,3 @@
- import { stateInfo } from "./stateData.js";
-
-export const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
-
 /* State class includes name, state code, and findStatePark method */
 export default class State {
   constructor(stateName, stateId){
@@ -24,15 +20,3 @@ export default class State {
     }
   } 
 }
-
-/* Function that takes data from stateData and creates 50 States */
-export function createStates(){
-  const stateArray = []; 
-  for (let i=0; i < 50; i++){
-      let state = new State(stateInfo.name[i], stateInfo.code[i]);
-      stateArray.push(state)
-      console.log()
-  }
-  console.log(stateArray)
-  return stateArray
- }

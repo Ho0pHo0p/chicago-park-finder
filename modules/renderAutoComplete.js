@@ -1,5 +1,5 @@
 import autocomplete, { parksFiltered, statesFiltered} from "./autocomplete.js";
-import { searchForm, searchBar, stateArray } from "./search.js";
+import { searchForm, searchBar, stateArray } from "./searchState.js";
 import formSubmit from "./searchFormSubmit.js"
 
 const searchMenu = document.querySelector('.search-menu');
