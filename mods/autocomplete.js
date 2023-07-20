@@ -14,22 +14,17 @@ function filterStateLetters(userInput, stateArray){
   return statesFiltered
 }
 
-function autoFillState(searchBar){
-  
-}
-
-
 export default async function autocomplete(searchBar, stateArray){
   let userInput = userInputFunc(searchBar);
   let statesFiltered = filterStateLetters(userInput, stateArray);
 
   renderStates(statesFiltered);
   await topParks(statesFiltered); 
-
   if(statesFiltered[0]){
     await renderParks(statesFiltered[0].topParks)
   } else {
    await renderParks();
   }
 
+  
 }

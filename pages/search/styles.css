@@ -103,7 +103,7 @@ body {
   margin-right: auto;
 }
 
-.search-result {
+.park {
   height: 200px;
   display: grid;
   grid-template-columns: 300px 1fr;

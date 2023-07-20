@@ -1,5 +1,5 @@
 import { stateArray } from "./searchState.js";
-import stateClass, { key } from "./stateClass.js"
+import { key } from "../mods/topParksAPI.js";
 
 const userState= localStorage.getItem('stateSearched').toUpperCase();
 let userStateCode;

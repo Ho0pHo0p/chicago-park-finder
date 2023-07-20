@@ -1,5 +1,6 @@
 import topParks from "./topParksAPI.js";
 import autocomplete from "./autocomplete.js";
+import submitSearch from "./submitSearch.js";
 
 export function renderStates(states){
   const stateContainer = document.getElementById('state-list');
@@ -17,9 +18,10 @@ export function renderStates(states){
   
   if (states.length > 5){
     for(let i = 0; i < 5; i++){
+      const state = states[i]
       const stateElement = document.createElement('li');
       stateElement.classList.add('listed-state')
-      stateElement.innerText = `${states[i].name}`
+      stateElement.innerText = `${state.name}`
       stateContainer.append(stateElement)
     }
   }else if (states.length <= 5){
@@ -68,16 +70,25 @@ export default async function searchMenu(searchBar, stateArray) {
   await renderStates(stateArray); 
   await topParks(stateArray)
   await renderParks(stateArray[0].topParks)
-
+  
   searchBar.addEventListener('focus', ()=>{
     searchMenu.classList.remove('hidden')
   })
+
   searchBar.addEventListener('input', ()=>{
     searchMenu.classList.remove('hidden')
     autocomplete(searchBar, stateArray);
   })
-  searchBar.addEventListener('focusout', ()=>{
+
+  searchMenu.addEventListener('click', (e)=>{
+    const userState = e.target.innerText;
+    submitSearch(stateArray, userState)
+  })
+
+  window.addEventListener('dblclick', ()=>{
     searchMenu.classList.add('hidden')
   })
+
 }
+
 

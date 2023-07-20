@@ -1,4 +1,8 @@
+import { key } from "./topParksAPI.js";
+
 /* State class includes name, state code, and findStatePark method */
+
+
 export default class State {
   constructor(stateName, stateId){
     this.name = stateName, 
