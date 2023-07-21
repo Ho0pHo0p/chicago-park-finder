@@ -16,9 +16,10 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-
   font-size: 22px;
   font-weight: 400;
+  text-align: center;
+  padding-top: 17px;
 }
 
 h2 {
@@ -52,37 +53,14 @@ button {
   background-color: var(--back-color2);
   height: 64px;
   box-shadow: 1px 1px 6px rgba(113, 121, 113, .3);
-
-  display:flex;
-  justify-content: space-around;
-  flex-flow: wrap;
-  align-items: center;
 }
 
 .menu {
   background-color: azure;
 }
 
-.language {
-  background-color: rgba(13, 109, 43, 1);
-  border-radius: 4px;
-  padding: 6px, 10px, 6px, 10px;
-  width: 64px;
-  height: 36px;
-
-  font-size: 16px;
-  color: var(--back-color1);
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
+.fa-tree {
 }
-
-.fa-bars {
-  font-size: 24px;
-}
-
 /* MAIN SECTION STYLING */
 
 .main-section {
@@ -359,6 +337,7 @@ footer a {
 @media only screen and (max-width: 460px) {
   h1 {
     font-size: 1rem;
+    padding-top: 0;
   }
 
   .search li {
@@ -391,6 +370,7 @@ footer a {
   }
 
   h1 {
+    padding-top: 0;
     grid-column: 1 / span 2;
     grid-row:1;
 
@@ -593,6 +573,7 @@ footer a {
 
 
   h1 {
+    padding-top: 0;
     grid-column: 2 / span 3;
     grid-row: 1 / span 2;
     

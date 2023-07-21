@@ -13,6 +13,8 @@ function renderParks(userState){
       parkContainer.classList.add('park');
       parkContainer.setAttribute('id', `${park.id}`)
   
+      const parkImageCont = document.createElement('div');
+      parkImageCont.classList.add('park-photo-container');
       const parkImage = document.createElement('img');
       parkImage.classList.add('park-photo');
       if(park.images[0]){
@@ -21,6 +23,7 @@ function renderParks(userState){
       } else{
         parkImage.src = '/images/noImage.png';
       }
+      parkImageCont.append(parkImage);
   
       const parkType = document.createElement('p');
       parkType.classList.add('park-type');
@@ -46,7 +49,7 @@ function renderParks(userState){
         feature.innerText = `${park.activities[0].name}`
         featureContainer.append(feature)
       }
-      parkContainer.append(parkImage, parkType, parkName, featureContainer)
+      parkContainer.append(parkImageCont, parkType, parkName, featureContainer)
       parkList.append(parkContainer)
     }
 }
