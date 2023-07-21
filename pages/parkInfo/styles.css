@@ -36,6 +36,13 @@ header button {
   gap: 5px;
 }
 
+#park-name {
+  width: 80%;
+  font-size: 36px;
+  margin: auto;
+  padding: 17px;
+}
+
 .detail {
   background-color: var(--back-color3);
   width: 75%;
@@ -73,6 +80,25 @@ header button {
   display: none;
 }
 
-@media only screen and (min-width: 992px) {...}
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {...}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .chevron {
+    display: none;
+  }
+
+  .detail {
+    background-color: transparent;
+    border-top: gainsboro 2px solid;
+  }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  body {
+  }
+}

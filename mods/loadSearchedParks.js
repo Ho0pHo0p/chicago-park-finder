@@ -11,7 +11,7 @@ function renderParks(userState){
   
       const parkContainer = document.createElement('div'); 
       parkContainer.classList.add('park');
-      parkContainer.setAttribute('id', `${park.id}`)
+      parkContainer.setAttribute('id', `${park.parkCode}`)
   
       const parkImageCont = document.createElement('div');
       parkImageCont.classList.add('park-photo-container');
@@ -60,9 +60,9 @@ function clickPark(userState, userPark){
 
   for(let parkElement of parkElements ){
     parkElement.addEventListener('click', ()=>{
-      const id = parkElement.getAttribute('id')
+      const code = parkElement.getAttribute('id')
       for(let park of parks){
-        if(id === park.id){
+        if(code === park.parkCode){
           userPark = park;
            loadParkInfoPage(userPark)
         }
@@ -72,6 +72,7 @@ function clickPark(userState, userPark){
 } 
 
 async function loadParkInfoPage(userPark){
-  localStorage.setItem('parkSelected', `${userPark.id}`)
+  console.log(userPark.parkCode)
+  localStorage.setItem('parkSelected', `${userPark.parkCode}`)
   await window.location.assign('parkInfo.html')
 }
