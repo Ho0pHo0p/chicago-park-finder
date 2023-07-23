@@ -1,4 +1,4 @@
-import topParks, { key } from "./topParksAPI.js";
+const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
 
 export default async function loadParkDetailsAPI(parkCode, parkDetails){
   try{
