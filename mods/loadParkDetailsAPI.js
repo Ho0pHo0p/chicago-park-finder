@@ -10,11 +10,15 @@ export default async function loadParkDetailsAPI(parkCode, parkDetails){
     parkDetails.photo = parkObj.images;
     parkDetails.description = parkObj.description;
     parkDetails.directions = parkObj.directionsInfo
-    parkDetails.address = parkObj.addresses
-    parkDetails.contact = parkObj.contacts;
-    parkDetails.hours = parkObj.operatingHours;
+    parkDetails.address = parkObj.addresses[0]
+    parkDetails.contact = {
+      phoneNum: parkObj.contacts.phoneNumbers[0].phoneNumber,
+      emailAddress: parkObj.contacts.emailAddresses[0].emailAddress
+    }
+    parkDetails.hours = parkObj.operatingHours[0].description;
     parkDetails.weather = parkObj.weatherInfo;
-    parkDetails.fees = parkObj.fees;    
+    parkDetails.fees = parkObj.fees
+  
   }
   catch {
     console.log('error')
