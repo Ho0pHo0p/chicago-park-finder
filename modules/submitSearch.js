@@ -1,7 +1,7 @@
 import stateArray from "./statesData.js";
 
 function loadSearchPage(){
-  window.location.assign('search.html')
+  window.location.assign('./pages/search.html')
 }
 
 export default async function submitSearch(stateArray, userInput){
