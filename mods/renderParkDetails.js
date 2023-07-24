@@ -30,12 +30,13 @@ function renderDetailInfo(parkDetailsCont, parkDetails){
 
   createDetailName('contact', 'contact', parkDetailsCont);
     detailArray = [parkDetails.contact.phoneNum, parkDetails.contact.emailAddress];
-    iconArray = ['<i class="fa-solid fa-mobile-screen-button phone"></i>', '<i class="fa-solid fa-envelope email"></i>' ]
+    iconArray = ['<i class="fa-solid fa-mobile-screen-button phone"></i>', '<i class="fa-solid fa-envelope email"></i>']
     createDetailList('contact', detailArray, parkDetailsCont, iconArray); 
 
     createDetailName('address & directions','addressDirections', parkDetailsCont);
-    detailArray = [`${parkDetails.address.line1}, ${parkDetails.address.city} ${parkDetails.address.stateCode} ${parkDetails.address.postalCode}`, parkDetails.directions];
-    createDetailList('addressDirections', detailArray, parkDetailsCont)
+    detailArray = [`${parkDetails.address.line1}, ${parkDetails.address.city}, ${parkDetails.address.stateCode} ${parkDetails.address.postalCode}`, parkDetails.directions];
+    iconArray = ['<i class="fa-solid fa-location-dot location"></i>', '']
+    createDetailList('addressDirections', detailArray, parkDetailsCont, iconArray)
 
     createDetailName('operating hours', 'operatingHours', parkDetailsCont);
     createDetailParagrah('operatingHours', parkDetails.hours, parkDetailsCont)
