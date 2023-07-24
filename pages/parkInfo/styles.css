@@ -59,22 +59,16 @@ header button {
   justify-content: space-between;
 }
 
+.detail-info {
+  display: flex;
+  flex-flow: column;
+}
+
 .chevron {
   font-size: 15px;
 }
 
-.park-contact-container {
-  text-decoration: underline;
-  word-spacing: 10px;
-  display: flex;
-  flex-flow: column;
-  gap: 15px;
-}
 
-.contact-info {
-  display: flex;
-  gap: 10px;
-}
 
 .hidden {
   display: none;
