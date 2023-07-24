@@ -55,20 +55,25 @@ button {
   box-shadow: 1px 1px 6px rgba(113, 121, 113, .3);
 }
 
-.menu {
-  background-color: azure;
+#emblem {
+  display: none;
 }
 
-.fa-tree {
+.site-links {
+  display: none;
 }
+
+.page-links {
+  display: none;
+}
+
 /* MAIN SECTION STYLING */
 
 .main-section {
   margin: 30px;
-
   display: flex;
-  flex-flow: column;
-  gap: 3rem;
+  flex-flow: column wrap;
+  gap: 30px;
 }
 
 /* Section 1*/ 
@@ -86,8 +91,6 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-
-
 }
 
 input {
@@ -347,58 +350,48 @@ footer a {
 
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-
 @media only screen and (min-width: 700px) {
-
-  body {
-    background-color: var(--back-color2);
-
-  }
  
   .header {
     height: 10vh;
     font-family: var(--p-font);
-    
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr 1fr;
+    align-items: center;
     gap: 28px;
+    padding: 20px;
+  }
 
-    padding: 16px;
-    box-shadow: none;
+  #logo-title {
+    grid-column: 1 / span 4;
+    grid-row:1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
   }
 
   h1 {
     padding-top: 0;
-    grid-column: 1 / span 2;
-    grid-row:1;
-
     font-family: var(--p-font);
     font-size: 1rem;
   }
 
-  #tree-emblem {
-    display: none;
+  #emblem {
+    display: block;
+    font-size: 2rem;
+    color: var(--main-color)
   }
 
-  .language {
-    grid-column: 6;
-    grid-row: 1;
-
-    margin-left: 4rem;
-  }
-
-  .site-links{
+ .site-links {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 1px;
-
-    grid-column: 3 / span 3;
+    grid-column: 4 / span 4;
     grid-row: 1; 
-
     font-size: 15px;
+    color: var(--main-color);
+    text-transform: capitalize;
   }
 
   .fa-circle {
@@ -407,13 +400,11 @@ footer a {
   }
 
   .page-links {
-    margin-right: 36px;
-
     display: flex;
     justify-content: space-between;
-
-    grid-column: 1 / span 6;
-    grid-row: 2; 
+    grid-column: 1 / span 7;
+    grid-row: 2;  
+    text-transform: capitalize;
   }
 
   .page-links a {
@@ -540,45 +531,29 @@ footer a {
 
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  body {
-   background-color: var(--back-color1);
-  }
-
-  #tree-emblem {
-    display: block;
-  }
-
-  .emblem {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-
-    color: var(--main-color);
-    font-size: 48px;
-  }
-
+  
   .header {
-
     display: grid;
-    grid-template-columns: .5fr repeat(13, 1fr) 20px;
+    grid-template-columns: .5fr repeat(13, 1fr);
     grid-template-rows: 1fr 1fr;
     gap: 20px;
-
     height: 15vh;
-
     box-shadow: 1px 1px 6px rgba(113, 121, 113, .3);
-  
   }
 
+  #logo-title {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 2;
+    padding-left: 10px;
+  }
+
+  #emblem {
+    font-size: 4rem;
+  }
 
   h1 {
     padding-top: 0;
-    grid-column: 2 / span 3;
-    grid-row: 1 / span 2;
-    
-
-
     font-family: var(--header-font);
     font-size: 1.2rem;
   }
@@ -587,36 +562,21 @@ footer a {
     font-size: 2rem;
   }
 
-  .language {
-    grid-column: 14 /span 2;
-    grid-row: 1 ;
-  }
-
-  .site-links{
+  .site-links {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
-    grid-column: 10 / span 5;
+    grid-column: 8 / span 11;
     grid-row: 1; 
-
     font-size: 15px;
-
-    margin-right: 40px;
-  }
-
-  .fa-circle {
     color: var(--main-color);
-    font-size: 5px;
+    text-transform: capitalize;
   }
 
   .page-links {
-    margin-right: 52px;
-
     display: flex;
     justify-content: space-between;
-
-    grid-column: 7 / span 10;
+    grid-column: 6 / span 12;
     grid-row: 2; 
   }
 
