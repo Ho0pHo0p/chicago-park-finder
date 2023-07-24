@@ -1,4 +1,4 @@
-export const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
+const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
 
 export default async function topParks(states){
   let parksFiltered = [];

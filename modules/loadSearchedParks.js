@@ -1,4 +1,3 @@
-
 export default async function loadParks(userState, userPark){
   await userState.findStateParks();
   await renderParks(userState)

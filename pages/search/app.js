@@ -1,5 +1,5 @@
-import loadParks from "../../mods/loadSearchedParks.js";
-import stateArray from "../../mods/statesData.js";
+import loadParks from "../../modules/loadSearchedParks.js";
+import stateArray from "../../modules/statesData.js";
 
 
 function App(){
@@ -13,7 +13,6 @@ function App(){
   })(); 
   let userPark;
   loadParks(userState, userPark);
-
 }
 
 App(); 

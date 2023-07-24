@@ -1,6 +1,6 @@
-import loadParkDetailsAPI from "../../mods/loadParkDetailsAPI.js";
-import renderParkDetails from "../../mods/renderParkDetails.js";
-import mobileDisplayDetails from "../../mods/mobileDisplayDetails.js";
+import loadParkDetailsAPI from "../../modules/loadParkDetailsAPI.js";
+import renderParkDetails from "../../modules/renderParkDetails.js";
+import mobileDisplayDetails from "../../modules/mobileDisplayDetails.js";
 
 async function APP(){
   const parkCode = localStorage.getItem('parkSelected');

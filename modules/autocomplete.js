@@ -1,47 +1,30 @@
-import { searchBar, stateArray } from "./searchState.js";
-import { renderParks, renderStates } from "./renderAutoComplete.js";
-import { key } from "../mods/topParksAPI.js"
-import { autofillInput } from "./renderAutoComplete.js";
-import topParks from "../mods/topParksAPI.js";
+import topParks from "./topParksAPI.js";
+import userInputFunc from "./userInput.js";
+import { renderParks, renderStates } from "./searchMenu.js";
 
-export let statesFiltered = [];
-export let parksFiltered = [];
-
-export default async function autocomplete(e){
-  let userInput = searchBar.value;
-  filterStateLetters(userInput);
-  renderStates();
-  autofillInput();
-  await filterParks(statesFiltered)
-  renderParks();
-}
-  
-function filterStateLetters(userInput){
-  statesFiltered = [];
+function filterStateLetters(userInput, stateArray){
+  let statesFiltered = [];
   for (let state of stateArray){
-    let stateSlice = state.name.slice(0, searchBar.value.length); 
+    let stateSlice = state.name.slice(0, userInput.length); 
 
     if (stateSlice.toUpperCase() === userInput.toUpperCase()){
       statesFiltered.push(state)
     }
   }
+  return statesFiltered
 }
 
-async function filterParks(statesFiltered){
-  parksFiltered = [];
+export default async function autocomplete(searchBar, stateArray){
+  let userInput = userInputFunc(searchBar);
+  let statesFiltered = filterStateLetters(userInput, stateArray);
 
-  if (statesFiltered.length !== 0){
-    const topState = statesFiltered[0];
-    if(!topState.topParks){
-      try{
-        const res = await fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${topState.code}&limit=5&api_key=${key}`);
-        const data = await res.json();
-        parksFiltered = data.data
-        topState.topParks = parksFiltered; 
-      }
-      catch {
-          console.log('error')
-      }
-    }
+  renderStates(statesFiltered);
+  await topParks(statesFiltered); 
+  if(statesFiltered[0]){
+    await renderParks(statesFiltered[0].topParks)
+  } else {
+   await renderParks();
   }
+
+  
 }

@@ -1,4 +1,4 @@
-import { key } from "./topParksAPI.js";
+const key = 'haJKepRaRFghVDhjTDkpnQgsvc03Qs1gvXUL5PL2';
 
 /* State class includes name, state code, and findStatePark method */
 

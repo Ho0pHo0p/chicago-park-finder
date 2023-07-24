@@ -1,8 +1,9 @@
-import search from "../../mods/search.js";
+import search from "../../modules/search.js";
+import parkCards from "../../modules/parkCards.js";
 
 function App(){
   search();
-  // parkCards();
+  parkCards();
   // feedbackForm();
 }
 
