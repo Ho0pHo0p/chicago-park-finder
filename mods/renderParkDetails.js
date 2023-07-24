@@ -1,8 +1,10 @@
+import parkDetailInteractive from "./mobileDisplayDetails.js";
 
-export default function(parkDetails){
+
+export default async function(parkDetails){
   const parkDetailsCont = document.querySelector('.park-details'); 
 
-  console.log(parkDetails)
+  console.log(parkDetailsCont)
 
   //Park Name
   const parkNameElement = document.createElement('h3');
@@ -11,12 +13,14 @@ export default function(parkDetails){
   parkDetailsCont.append(parkNameElement)
 
   //Park Image
+  if(parkDetails.photo[0]){
   const parkImgElement = document.createElement('img');
   parkImgElement.classList.add('park-image');
   parkImgElement.setAttribute('src', `${parkDetails.photo[0].url}`);
   parkImgElement.setAttribute('alt', `${parkDetails.photo[0].altText}`);
   parkDetailsCont.append(parkImgElement); 
-  renderDetailInfo(parkDetailsCont, parkDetails)
+  }
+  await renderDetailInfo(parkDetailsCont, parkDetails)
 }
 
 
@@ -38,7 +42,7 @@ function renderDetailInfo(parkDetailsCont, parkDetails){
     iconArray = ['<i class="fa-solid fa-location-dot location"></i>', '']
     createDetailList('addressDirections', detailArray, parkDetailsCont, iconArray)
 
-    createDetailName('operating hours', 'operatingHours', parkDetailsCont);
+    createDetailName('operating hours', 'operatingHours',  parkDetailsCont);
     createDetailParagrah('operatingHours', parkDetails.hours, parkDetailsCont)
 
     createDetailName('weather', 'weather', parkDetailsCont);
@@ -55,7 +59,6 @@ function renderDetailInfo(parkDetailsCont, parkDetails){
     } else {
       createDetailParagrah('fees', parkDetails.fees, 'fees');
     }
-
 }
 
 function createDetailName(title, id, parkDetailsCont){
@@ -78,7 +81,7 @@ function createDetailParagrah(id, key, parkDetailsCont){
   const detailCont = document.getElementById(`${id}`);
   const paragraphElement = document.createElement('p');
   paragraphElement.setAttribute('id', `${id}-info`)
-  paragraphElement.classList.add('detail-info')
+  paragraphElement.classList.add('detail-info', 'hidden')
   paragraphElement.innerText = `${key}`;
   if(paragraphElement.innerText === ''){
     noInfo(`We are sorry there is no information available about the ${id} at this park`, id)
@@ -89,7 +92,8 @@ function createDetailParagrah(id, key, parkDetailsCont){
 function createDetailList(id, liArray, parkDetailsCont, iconArray) {
   const detailCont = document.getElementById(`${id}`);
   const ulElement = document.createElement('ul');
-  ulElement.classList.add(`${id}-ul`, 'detail-info');
+  ulElement.setAttribute('id',`${id}-info`)
+  ulElement.classList.add(`${id}-ul`, 'detail-info', 'hidden');
   detailCont.append(ulElement);
 
   for(let li of liArray){
@@ -108,7 +112,8 @@ function createDetailList(id, liArray, parkDetailsCont, iconArray) {
 function noInfo(message, id){
   const detailCont = document.getElementById(`${id}`);
   const messageElement = document.createElement('p');
-  messageElement.classList.add(`detail-info`);
+  messageElement.classList.add(`detail-info`, 'hidden');
+  messageElement.setAttribute('id', `${id}-info`)
   messageElement.innerText = `${message}`
   detailCont.append(messageElement); 
 }

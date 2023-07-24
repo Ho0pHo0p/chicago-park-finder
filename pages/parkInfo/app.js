@@ -1,5 +1,6 @@
 import loadParkDetailsAPI from "../../mods/loadParkDetailsAPI.js";
 import renderParkDetails from "../../mods/renderParkDetails.js";
+import mobileDisplayDetails from "../../mods/mobileDisplayDetails.js";
 
 async function APP(){
   const parkCode = localStorage.getItem('parkSelected');
@@ -16,7 +17,8 @@ async function APP(){
     fees: '',
   }
   await loadParkDetailsAPI(parkCode, parkDetails)
-  renderParkDetails(parkDetails)
+  await renderParkDetails(parkDetails)
+  await mobileDisplayDetails(parkDetails)
 }
 
 APP()
