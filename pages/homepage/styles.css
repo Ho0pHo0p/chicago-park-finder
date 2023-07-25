@@ -319,9 +319,18 @@ a {
   gap: 16px;
 }
 
-.feedback-form button, .feedback-form a{
+.feedback-form a{
   font-size: 17px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.feedback-form-online {
+  background-color: var(--main-color);
+  color: var(--back-color2);
+  border-radius: 5px;
+  padding: 10px 24px;
+  border: none;
 }
 
 /* FOOTER */
@@ -506,7 +515,7 @@ footer a {
     width: 100%;
   }
 
-  .feedback-form a {
+  .feedback-form-print {
     border: 1px solid var(--main-color);
     border-radius: 5px;
     padding: 10px 24px;
