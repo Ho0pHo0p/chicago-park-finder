@@ -1,4 +1,4 @@
-import backButton from "../../modules/backButton.js";
+ximport backButton from "../../modules/backButton.js";
 import loadParks from "../../modules/loadSearchedParks.js";
 import stateArray from "../../modules/statesData.js";
 

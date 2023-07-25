@@ -17,7 +17,7 @@ async function APP(){
     weather: '',
     fees: '',
   }
-  backButton('./parkInfo.h');
+  backButton('./parkInfo.html');
   await loadParkDetailsAPI(parkCode, parkDetails)
   await renderParkDetails(parkDetails)
   await mobileDisplayDetails(parkDetails)
