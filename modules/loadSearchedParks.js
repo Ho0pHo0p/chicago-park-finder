@@ -32,23 +32,7 @@ function renderParks(userState){
       parkName.classList.add('park-name');
       parkName.innerText = `${park.fullName}`
   
-      const featureContainer = document.createElement('ul');
-      featureContainer.classList.add('features-container');
-  
-      if(park.activities[2]){
-      for(let i=0; i < 2; i++){
-        const feature = document.createElement('li');
-        feature.classList.add('feature');
-        feature.innerText = `${park.activities[i].name}`
-        featureContainer.append(feature)
-        }
-      }else if (park.activities[0]){
-        const feature = document.createElement('li');
-        feature.classList.add('feature');
-        feature.innerText = `${park.activities[0].name}`
-        featureContainer.append(feature)
-      }
-      parkContainer.append(parkImageCont, parkType, parkName, featureContainer)
+      parkContainer.append(parkImageCont, parkType, parkName)
       parkList.append(parkContainer)
     }
 }

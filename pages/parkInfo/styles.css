@@ -1,9 +1,11 @@
 /* Header */
 
 header {
+  height: 60px;
   display: grid;
-  grid-template-columns: .5fr 1fr .5fr;
-  padding: 16px 16px 0px 16px;
+  grid-template-columns: .75fr 1fr .75fr;
+  padding: 0px 0px 0px 0px;
+  align-items: center;
   gap: 0;
 }
 
@@ -15,13 +17,14 @@ header {
   text-align: center;
 }
 
-header button {
+.back-button {
   background-color: transparent;
-  color: #1e1e1e;
+  color: black;
+  font-size: 17px;
   grid-column: 1;
   margin-bottom: 0;
   text-align: left;
-
+  cursor: pointer;
 }
 
 /* Main Section */
@@ -71,7 +74,6 @@ header button {
 .detail-info {
   display: flex;
   flex-flow: column;
-  padding: 10px;
 }
 
 .addressDirections-ul{
@@ -88,6 +90,34 @@ header button {
 
 .chevron {
   font-size: 15px;
+}
+
+footer {
+  background-color: var(--back-color3);
+  height: 340px;
+  padding: 32px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column;
+
+  line-height: 28px;
+  font-size: 17px;
+  font-weight: 200;
+  color: var(--main-text-color);
+}
+
+.footer-container {
+  display: flex;
+  flex-flow: column;
+}
+
+footer a {
+  color: var(--p-font);
+  text-decoration: underline;
+}
+.fa-brands {
+  font-size: 32px;
 }
 
 .hidden {
@@ -109,9 +139,75 @@ header button {
   .detail-info{
     padding: 0;
   }
+}
 
-  .hidden {
-    display: block;
+@media only screen and (min-width: 700px) {
+  footer {
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) .5fr .5fr;
+    grid-template-rows: repeat(3, 1fr);
   }
 
+  .socials {
+    grid-column: 5;
+    grid-row: 1 / span 2;
+  }
+
+  .contact {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 4;
+  }
+
+  .contact h3 {
+    padding-bottom: 1rem;
+  }
+
+  .contact a{
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  .site-areas{
+    grid-column: 2;
+    grid-row: 1 / span 4;
+
+    line-height: 2rem;
+  }
+
+  .emblem-footer {
+    font-size: 72px;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+  
+  footer {
+    background-color: var(--main-color);
+    color: var(--back-color1);
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .site-areas {
+    grid-column: 3;
+  }
+
+  .contact {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .footer-container h3 {
+    color: var(--back-color1);
+    font-size: 22px;
+  }
+
+  .emblem-footer {
+    font-size: 72px;
+    grid-column: 2;
+  }
 }

@@ -18,8 +18,8 @@ h1, h2, h3, h4 {
 h1 {
   font-size: 22px;
   font-weight: 400;
+  padding-top: 20px;
   text-align: center;
-  padding-top: 17px;
 }
 
 h2 {
@@ -51,7 +51,7 @@ button {
 
 .header {
   background-color: var(--back-color2);
-  height: 64px;
+  height: 60px;
   box-shadow: 1px 1px 6px rgba(113, 121, 113, .3);
 }
 
@@ -95,7 +95,7 @@ input {
   border: none;
   background-color: transparent;
   width: 100%;
-  padding-top: 7px;
+  padding: 8px;
 
   font-family: var(--p-font);
   font-size: 17px;
@@ -106,15 +106,11 @@ input {
 .search-menu {
   position: absolute;
   top: 180px;
-  width: 75vw;
   padding: 20px 16px;
-
-
+  width: 75vw;
   background-color: var(--back-color2);
-
   box-shadow: 1px 6px 6px rgba(113, 121, 113, .2);
   border-radius: 0px 0px 8px 8px;
-
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
@@ -124,6 +120,24 @@ input {
 .search p {
   color: rgba(113, 121, 113, 1);
   padding-top: 5px;
+}
+
+.search {
+  margin: 0px 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  max-height: 40vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}
+
+.search::-webkit-scrollbar {
+  display: none;
 }
 
 #search-label-state {
@@ -138,41 +152,24 @@ input {
   font-weight: 500
 }
 
-.search {
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 8px;
-
-  max-height: 40vh;
-  overflow-y: scroll; 
-
-  margin-left: 1rem;
-}
-
 .search ul {
-  width: 90%;
+  width: 75vw;
 }
 
 .search li {
   background-color: var(--back-color1);
   height: auto;
   padding: 10px;
-  width: 100%;
-
   border-radius: 4px;
   border-bottom: 1px solid rgba(113, 121, 113, .2);;
   text-align: left;
-
   cursor: pointer;
 }
 
 .fa-magnifying-glass {
   color: rgba(113, 121, 113, 1);
   font-size: 1rem;
-  padding-top: 8px;
-  padding-left: 8px;
+  padding: 8px;
 }
 
 /* Section 2 */
@@ -240,7 +237,7 @@ a {
   margin: 8px 0px;
 }
 
-/* Section 4 */
+/* Section 4 - Passport Cards*/
 
 .card-container {
   margin-right: -16px;
@@ -289,14 +286,16 @@ a {
 .parkName {
   grid-column: 1;
   grid-row: 1;
+  font-weight: 500;
 }
 
 .parkStates {
   grid-column: 1;
   grid-row: 2;
+  color:rgba(113, 121, 113, 1)
 }
 
-/* Section 3 */
+/* feedback */
 
 .feedback {
   text-align: center;
@@ -318,6 +317,11 @@ a {
   flex-flow: column;
   align-items: center;
   gap: 16px;
+}
+
+.feedback-form button, .feedback-form a{
+  font-size: 17px;
+  font-weight: 600;
 }
 
 /* FOOTER */
@@ -350,28 +354,28 @@ footer a {
   font-size: 32px;
 }
 
+.emblem-footer {
+  font-size: 60px;
+  grid-column: 1;
+
+}
+
 .hidden {
   display: none;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 460px) {
-  h1 {
-    font-size: 1rem;
-    padding-top: 0;
+  .search-menu {
+    max-height: 300px;
   }
-
-  .search li {
-    width: 67vw;
-  }
-
 
 }
 
 @media only screen and (min-width: 700px) {
  
   .header {
-    height: 10vh;
+    height: 70px;
     font-family: var(--p-font);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -543,20 +547,14 @@ footer a {
 
 }
 
-.emblem-footer {
-  font-size: 60px;
-  grid-column: 1;
-
-}
-
 @media only screen and (min-width: 992px) {
   
   .header {
+    height: 70px;
     display: grid;
     grid-template-columns: .5fr repeat(13, 1fr);
     grid-template-rows: 1fr 1fr;
     gap: 20px;
-    height: 15vh;
     box-shadow: 1px 1px 6px rgba(113, 121, 113, .3);
   }
 
@@ -613,13 +611,13 @@ footer a {
   }
   
   .search-menu {
-      top: 370px;
-      width: 50vw;
-    }
+    top: 370px;
+    width: 50vw;
+  }
   
-    .search li {
-      max-width: 48vw;
-    }
+  .search li {
+    max-width: 48vw;
+  }
 
 
   .section1 h2 {
