@@ -4,7 +4,6 @@ import stateArray from "../../modules/statesData.js";
 
 
 function App(){
-  backButton('../index.html');
   let userState = (function userStateObject(){
     const userStateString = localStorage.getItem('stateSearched');
     for(let state of stateArray){
@@ -14,6 +13,7 @@ function App(){
     }
   })(); 
   let userPark;
+  backButton('../index.html');
   loadParks(userState, userPark);
 }
 

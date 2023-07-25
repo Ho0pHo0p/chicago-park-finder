@@ -1,17 +1,10 @@
-import parkDetailInteractive from "./mobileDisplayDetails.js";
-
-
 export default async function(parkDetails){
   const parkDetailsCont = document.querySelector('.park-details'); 
-
-  console.log(parkDetailsCont)
-
   //Park Name
   const parkNameElement = document.createElement('h3');
   parkNameElement.setAttribute('id', 'park-name')
   parkNameElement.innerText = `${parkDetails.name}`
   parkDetailsCont.append(parkNameElement)
-
   //Park Image
   if(parkDetails.photo[0]){
   const parkImgElement = document.createElement('img');
@@ -22,8 +15,6 @@ export default async function(parkDetails){
   }
   await renderDetailInfo(parkDetailsCont, parkDetails)
 }
-
-
 function renderDetailInfo(parkDetailsCont, parkDetails){
   let detailArray;
   let iconArray;
@@ -60,7 +51,6 @@ function renderDetailInfo(parkDetailsCont, parkDetails){
       createDetailParagrah('fees', parkDetails.fees, 'fees');
     }
 }
-
 function createDetailName(title, id, parkDetailsCont){
   const detailsCont = document.createElement('section');
   detailsCont.classList.add('detail');
@@ -76,7 +66,6 @@ function createDetailName(title, id, parkDetailsCont){
   detailsCont.append(detailNameCont);
   parkDetailsCont.append(detailsCont)
 }
-
 function createDetailParagrah(id, key, parkDetailsCont){
   const detailCont = document.getElementById(`${id}`);
   const paragraphElement = document.createElement('p');
@@ -88,7 +77,6 @@ function createDetailParagrah(id, key, parkDetailsCont){
   }
   detailCont.append(paragraphElement)
 }
-
 function createDetailList(id, liArray, parkDetailsCont, iconArray) {
   const detailCont = document.getElementById(`${id}`);
   const ulElement = document.createElement('ul');
@@ -108,7 +96,6 @@ function createDetailList(id, liArray, parkDetailsCont, iconArray) {
     ulElement.append(liElement)
   } 
 }
-
 function noInfo(message, id){
   const detailCont = document.getElementById(`${id}`);
   const messageElement = document.createElement('p');

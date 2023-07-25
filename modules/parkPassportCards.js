@@ -14,7 +14,8 @@ function createParkCard(cardCont, displayParks){
     card.classList.add('card');
     const image = document.createElement('img');
     image.classList.add('park-img');
-    image.setAttribute('src', `${park.images[0].url}`)
+    image.setAttribute('src', `${park.images[0].url}`);
+    image.setAttribute('alt', `${park.images[0].alt}`)
     const infoCont = document.createElement('div');
     infoCont.classList.add('info-cont')
     const parkName = document.createElement('p');

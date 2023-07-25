@@ -83,6 +83,7 @@ body {
 /* Search Results */
 
 #park-list_searchpage{
+  min-height: 600px;
   margin: 20px;
   display: flex;
   flex-flow: column wrap;
