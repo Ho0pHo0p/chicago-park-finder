@@ -71,13 +71,13 @@ export default async function searchMenu(searchBar, stateArray) {
   await topParks(stateArray)
   await renderParks(stateArray[0].topParks)
   
-  searchBar.addEventListener('focus', ()=>{
-    searchMenu.classList.remove('hidden')
-  })
-
   searchBar.addEventListener('input', ()=>{
-    searchMenu.classList.remove('hidden')
-    autocomplete(searchBar, stateArray);
+    if(searchBar.value !== ''){
+      searchMenu.classList.remove('hidden')
+      autocomplete(searchBar, stateArray);
+    } else {
+      searchMenu.classList.add('hidden')
+    }
   })
 
   searchMenu.addEventListener('click', (e)=>{
@@ -85,7 +85,7 @@ export default async function searchMenu(searchBar, stateArray) {
     submitSearch(stateArray, userState)
   })
 
-  window.addEventListener('dblclick', ()=>{
+  window.addEventListener('click', ()=>{
     searchMenu.classList.add('hidden')
   })
 
