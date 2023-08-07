@@ -1,7 +1,7 @@
 export default async function loadParks(userState, userPark){
   await userState.findStateParks();
-  await renderParks(userState)
-  await clickPark(userState, userPark);
+  renderParks(userState)
+  clickPark(userState, userPark);
 }
 
 function renderParks(userState){
@@ -57,5 +57,5 @@ function clickPark(userState, userPark){
 async function loadParkInfoPage(userPark){
   console.log(userPark.parkCode)
   localStorage.setItem('parkSelected', `${userPark.parkCode}`)
-  await window.location.assign('parkInfo.html')
+  window.location.assign('parkInfo.html')
 }

@@ -1,4 +1,4 @@
-import topParks from "./topParksAPI.js";
+// import topParks from "./topParksAPI.js";
 import autocomplete from "./autocomplete.js";
 import submitSearch from "./submitSearch.js";
 
@@ -67,9 +67,9 @@ export function renderParks(parks){
 export default async function searchMenu(searchBar, stateArray) {
   const searchMenu = document.querySelector('.search-menu');
 
-  await renderStates(stateArray); 
-  await topParks(stateArray)
-  await renderParks(stateArray[0].topParks)
+  renderStates(stateArray); 
+  // await topParks(stateArray)
+  // // renderParks(stateArray[0].topParks)
   
   searchBar.addEventListener('input', ()=>{
     if(searchBar.value !== ''){
@@ -81,8 +81,8 @@ export default async function searchMenu(searchBar, stateArray) {
   })
 
   searchMenu.addEventListener('click', (e)=>{
-    const userState = e.target.innerText;
-    submitSearch(stateArray, userState)
+    const userInput = e.target.innerText;
+    submitSearch(stateArray, userInput)
   })
 
   window.addEventListener('click', ()=>{

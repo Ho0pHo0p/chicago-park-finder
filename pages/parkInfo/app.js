@@ -20,7 +20,7 @@ async function APP(){
   backButton('./search.html');
   await loadParkDetailsAPI(parkCode, parkDetails)
   await renderParkDetails(parkDetails)
-  await mobileDisplayDetails(parkDetails)
+  mobileDisplayDetails(parkDetails)
 }
 
 APP()

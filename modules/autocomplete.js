@@ -1,4 +1,4 @@
-import topParks from "./topParksAPI.js";
+// import topParks from "./topParksAPI.js";
 import userInputFunc from "./userInput.js";
 import { renderParks, renderStates } from "./searchMenu.js";
 
@@ -19,12 +19,12 @@ export default async function autocomplete(searchBar, stateArray){
   let statesFiltered = filterStateLetters(userInput, stateArray);
 
   renderStates(statesFiltered);
-  await topParks(statesFiltered); 
-  if(statesFiltered[0]){
-    await renderParks(statesFiltered[0].topParks)
-  } else {
-   await renderParks();
-  }
+  // await topParks(statesFiltered); 
+  // if(statesFiltered[0]){
+  //   await renderParks(statesFiltered[0].topParks)
+  // } else {
+  //  await renderParks();
+  // }
 
   
 }
